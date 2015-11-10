@@ -1,19 +1,6 @@
-\documentclass{book}
-\usepackage{geometry}
- \geometry{ a4paper, total={170mm,257mm}, left=20mm,top=20mm }
-\usepackage{sagetex}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{amsmath}
-\title{Individual Spread Footing}
-\author{Manpreet Kaur, Amritpal Singh}
-%---------------------------main document-------------------------------%
-\begin{document}
-\maketitle
-\tableofcontents
 \chapter{Individual spread Footing}
 \section{Introduction}
-Clause $34$ of the Code gives the provisions governing the design of reinforced concrete footings. These provisions are similar to those given by the ACI code. The design of footings in accordance with IS : 456—2000 differs from that by the old code in the following aspects.
+Clause $34$ of the Code gives the provisions governing the design of reinforced concrete footings. These provisions are similar to those given by the ACI code. The design of footings in accordance with IS :456—2000 differs from that by the old code in the following aspects.
 \begin{enumerate}
 \item Perimeter shear stress must not exceed the allowable value. This aspect was not
 given in the old code. But it is similar to the familiar concept of punching shear
@@ -43,7 +30,7 @@ Individual spread footings can be either square or rectangular in plan, the area
 
 \begin{equation}
 \label{eq:(1.1)}
-A\timesB =\frac{p}{q} (cm^2)
+A\times B =\frac{p}{q} (cm^2)
 \end{equation}
 
 where $P$ is the column load in $kN$ and p denotes the net allowable soil pressure in $kN/cm2$. In this development, self-weight of footing may not be considered. This involves only a small error in that, the weight of the concrete of footing is assumed here to be approximately equal to the weight of the earth displaced by it. Further, it is assumed here that the soil pressure under the footing is uniform. This is a reasonable assumption as discussed elsewhere. The individual spread footings can be of the following types (Fig. 12.1).
@@ -66,13 +53,18 @@ Where
 \quad S_p = P-p . (a+d)^2
 \end{equation}
 
+\begin{equation}
+\label{eq:(1.4)}
+T_a=k_s.T_c=k_s 0.25 \sqrt{fck}
+\end{equation}
+
 and $b_0$ = Perimeter of criticle closed section
 \par The allowable perimeter shear stress
 $\quad{T_a}$  
 (clause 31.6.3 of the code) is given by,
 
 Where, $fck$ is to be put in $N/m^2$ .\\
- $ks$ = 1.0 for square columns and also for rectangular with aspect ratio  $\left( \frac{b}{a} \right)$ $\leq {2.0}$. For the condition $T_v$ = $Ta$, equation \ref{eq:(12.2)} and \ref{eq:(12.4)} give,
+ $ks$ = 1.0 for square columns and also for rectangular with aspect ratio  $\left( \frac{b}{a} \right)$ $\leq {2.0}$. For the condition $T_v$ = $Ta$, equation \ref{eq:(1.2)} and \ref{eq:(1.4)} give,
 
  \begin{sagesilent}
          var('a,A,d,f,c,k,p')
@@ -100,7 +92,6 @@ Assuming $d$ = $\alpha.d$ , the condition $T_v=T_a$  gives,
  \end{equation}  
 
 
-
 $\alpha = 1.0$ for footings of Types ($a$), ($b$) and ($d$) (Fig. 12.1), while $\alpha$ < 1.0 for sloped footings of
 Type ($c$). The overall depth of footing is given by,
 
@@ -110,12 +101,13 @@ Type ($c$). The overall depth of footing is given by,
 \end{sagesilent}
 
 \begin{equation}
+        \label{eq:(1.8)}
         \sage{D}=\sage{z}
 \end{equation}
 Here, $d$ is regarded as an average value for either steel layer. For sloped footings (Fig. 12.2 $b$), simple geometry gives,
 
 \begin{equation}
-\label{eq:(1.8)}
+\label{eq:(1.9)}
 \alpha=\frac{d''}{d}=\frac{\quad{D_m}}{d}+\frac{D-\quad{D_m}}{d}.\frac{\left( 1-\frac{a}{A}-\frac{d}{A}\right)}{\left( 1-\frac{a}{A}\right)}
 \end{equation}
 
@@ -128,12 +120,12 @@ uniformly deep and sloped square footings. It can also be used for rectangular f
         z2=B-A                                                    
 \end{sagesilent}  
 
-\begin{equation}
-        \sage{z}=\sage{z2}
-\end{equation}
+\begin{align}
+       \sage{z}=\sage{z2} 
+\end{align} 
+Solution of numerical examples gives an idea that it is possible to develop thumb rules for fixing depth of footings. It may be noted that there is no dire need of exactness in fixing the value of depth of footing, only it should be more than adequate for the actions imposed on a footing. Table 12.1, based on equation (12.5), is developed for footings of Types ($a$) and ($b$) (Fig.12.1).
 
-Solution of numerical examples gives an idea that it is possible to develop thumb rules for fixing depth of footings. It may be noted that there is no dire need of exactness in fixing the value of depth of footing, only it should be more than adequate for the actions imposed on a footing. Table 12.1, based on equation (12.5), is developed for footings of Types ($a$) and ($b$) (Fig.12.1).\\\\
- It gives values of $\frac{D}{A}$ for various practicable values of p. It is seen that, for safety in beam\\ \\shear, these values are  to be increased by 10\% in case of steel types $Fe$ $415$ and $Fe$ $ 500$. For sloped and stepped footings (Types c and d), the depth of footing given by Table 12.1 may be increased by 20\%. The depth at the free end of a footing may be restricted to 15 cm, which is the minimum prescribed by the Code for spread footings.
+ It gives values of $\frac{D}{A}$ for various practicable values of $p$. It is seen that, for safety in beam shear, these values are  to be increased by 10\% in case of steel types $Fe$ $415$ and $Fe$ $ 500$. For sloped and stepped footings (Types c and d), the depth of footing given by Table 12.1 may be increased by 20\%. The depth at the free end of a footing may be restricted to 15 cm, which is the minimum prescribed by the Code for spread footings.
  
  \section{Design for Moment and Beam Shear} 
  Section 1-1 in Fig. 12.3 is the critical  Section for bending moment. The bending moment
@@ -150,8 +142,12 @@ for full width $B$ is given by,
 \end{equation}
 
 For footings of uniform depth and also stepped footings, the concrete compression zone is
-rectangular and charts of Chapter 2 are used to calculate the required area of steel. But for slopped footings, the concrete compression zone is of a trapezoidal shape and Chart 4.1 of Chapter 4 is to be used for finding steel area. Chart 4.1 can be used for both uniformly deep $(\gamma = 0)$ and sloped footings. The calculated steel area should not be less than the spec1ﬁed minimum steel area (Table 11.4 of Chapter 11) for spread footings which may be regarded as slabs for this purpose. 
-Section 2-2 in Fig. 12.3 is the critical section for beam shear. The shear force and moment at section 2-2 for the full width of footing is given by,
+rectangular and charts of Chapter 2 are used to calculate the required area of steel. But for slopped footings, the concrete compression zone is of a trapezoidal shape and Chart $4.1$ of Chapter $4$ is to be used for finding steel area. 
+Chart 4.1 can be used for both uniformly deep $(\gamma = 0)$ and sloped footings.
+The calculated steel area should not be less than the spec1ﬁed minimum steel area (Table 11.4 of Chapter 11)
+for spread footings which may be regarded as slabs for this purpose. 
+Section $2-2$ in Fig. 12.3 is the critical section for beam shear.
+The shear force and moment at section $2-2$ for the full width of footing is given by,
 
 \begin{sagesilent}                                                      
         var('p,B,b,A,a,d')                                                
@@ -160,15 +156,12 @@ Section 2-2 in Fig. 12.3 is the critical section for beam shear. The shear force
 \end{sagesilent}  
 
 \begin{equation}
-        '
         b S_{2-2}=\sage{z}(kN)
 \end{equation}
 
 \begin{equation}
         M_{2-2}=\sage{z2}(kNcm)
 \end{equation}
-
-
 
 \begin{sagesilent}
         var('tau_v,V_u')
@@ -263,7 +256,9 @@ For finding steel area, Chart 4.1 $(with \gamma = 0)$, may be used, as the concr
 \begin{equation}
         \sage{tau_v}=\sage{z2}=\frac{1.5S_{2-2}}{B.d_m}
 \end{equation}
-and it must not exceed Ta given by equation (12. 16), failing which depth $D_m$ should be suitably increased. Normally $D_m$ = 0.30 $D$ to 0.50 $D$ is kept in stepped footings and perimeter shear stress can be checked to be safe by using ﬁrst principles.
+
+and it must not exceed Ta given by equation (12. 16), failing which depth $D_m$ should be suitably increased.
+Normally $D_m = 0.30$ $D$ to $0.50$ $D$ is kept in stepped footings and perimeter shear stress can be checked to be safe by using ﬁrst principles.
 
 \section{Development Length of Bars}
 Column dowel bars should extend into footings for a distance equal to the development
@@ -292,7 +287,7 @@ section 1’ - 1’ is,
         y'= \frac{(A-a')}{2}-4 >L_d (tension)                                      
 \end{equation}
 
-Normally, full steel area required at section 1 — 1 is provided throughout and the steel strength $\sigma_s$ at section 1’ - 1’ may be less than its maximum value of 0.87 $f_y$. The value of $L_d$ (tension) should be calculated for the appropriate value of $\sigma_s$.
+Normally, full steel area required at section $1 — 1$ is provided throughout and the steel strength $\sigma_s$ at section 1’ - 1’ may be less than its maximum value of 0.87 $f_y$. The value of $L_d$ (tension) should be calculated for the appropriate value of $\sigma_s$.
 
 \section{Selection of Type of Footings}
 Footings of uniform depth (Type $\alpha$), though commonly used in practice for reasons of ease in design and construction, are the costliest. These consume more concrete quantity (about 25\% to 45\%) than that by sloped footings. This type is suitable only for small footings with overall depth being restricted to, say, 30 cm.
@@ -304,7 +299,7 @@ For footings of intermediate size, sloped footings with slope starting from $\fr
 For large-sized footings, sloped footings with the slope starting from the edge of column
 (Type $c$) or stepped footings (Type $d$) are preferred to other types, as these give the least quantities for concrete and steel consumption. The stepped footings give the least steel quantity, while the sloped footings (Type $c$), give the least concrete quantity. The depth for these types of footings works out to be about 20\% more than that for footings of uniform depth. Stepped footings are a little cumbersome in construction, while the sloped footings are easier in execution, albeit a little more labour-intensive than the footings of uniform depth.
 
-%---------------------------first example-------------------------------%
+%-----------------------------------first numerical example--------------------%
 
 \section{Examples}
 \textbf{ Example 12.1. Square footing of Uniform Depth (Type a).}\\
@@ -316,7 +311,7 @@ $$f_{ck} = 15 N/mm^2$$
 $$f_y = 415 N/mm^2$$
 \begin{enumerate}
 \item \textbf{Dimensions of footing}\\
-        Equation (12.1) gives,
+        Equation \ref{eq:(1.1)} gives,
         $$A^2=\frac{1000}{0.02}=50,000 cm^2$$
         $$A=223.6 cm$$
 Provided $225 \times 225$ base and
@@ -329,11 +324,11 @@ Provided $225 \times 225$ base and
         $$\frac{a}{A}=\frac{40}{225}=.018$$
         $$\frac{d}{A} = 0.18$$
         $$d=0.18 \times 225 = 40.5$$
-Equation (12.8) gives with $c = 4.0 cm,\phi=1.2cm$,   
+Equation \ref{eq:(1.8)} gives with $c = 4.0 cm,\phi=1.2cm$,   
         $$D=40.5+4.0+1.2=45.7 cm$$
         $$D = 50cm \text{ is safe.}$$
 \item  \textbf{Design for moment}
-Equation (12.10) gives,
+Equation \ref{eq:(1.10)} gives,
 $$M_{1-1}=0.01975 \times225(225-40)^1/8=19011kN/cm$$
 With rectangular compression zone, Chart (2.2) gives for,
         $$d=50-4.0-1.2=44.8cm$$
@@ -370,14 +365,16 @@ Equation (12.20) gives,
 
 $$y=\bigg[\frac{(225-40)}{2}-4.0\bigg]=88.5cm$$
 
-With $y > L_d$ (tension), footing bars will develop full strength at the critical section. It may be noted that with $D$ = 50 cm, this type of footing of uniform depth is not economical. Footing of Types ($b$) and ($c$) with sloping depth would be more economical than the present design.\\
+With $y > L_d$ (tension), footing bars will develop full strength at the critical section. 
+It may be noted that with $D = 50 cm$, this type of footing of uniform depth is not economical. 
+Footing of Types ($b$) and ($c$) with sloping depth would be more economical than the present design.
 \end{enumerate} 
 
-%---------------------------second example-------------------------------%
+%-----------------------------------second numerical example--------------------%
 
 \textbf{ Example 12.2. Rectangular sloped footing of Type ($c$).}\\
 \textbf{Given:}
-Same as in Ex. 12.1 with\\
+Same as in Ex. 12.1 with
 $$a = 40 cm$$
 $$b = 60 cm$$ 
 and the footing is to have equal overhangs on all sides of column.\\
@@ -413,19 +410,19 @@ and the footing is to have equal overhangs on all sides of column.\\
  
 \item  \textbf{Design for moment}\\
    Equation (12.10) gives,
-   $$M_1-1=0.0198\times235(215-40)^2/8=17812 kN cm$$
+   $$M_1-1=0.0198 \times 235(215-40)^2/8=17812 kN cm$$
    With trapezoidal compression zone, Chart 4.1 gives for,
-   $$b=60cm, d=5\fr4.8 cm$$
+   $$b=60cm, d=54.8 cm$$
    $$tan\beta =\frac{(D-D_m)}{(B-b)/2}=\frac{45}{87.5}=0.514$$
    $$\gamma=\frac{54.8}{60\times0.514}=1.8$$
    $$k=\frac{1.5\times17812}{1.5\times60\time(54.8)^2}=0.099$$
    $$\mu=0.11$$
-   $$A_st=\frac{0.11\times60\times54.8\times15}{0.87\times415}=15.03cm^2$$
+   $$A_st=\frac{0.11 \times 60 \times 54.8 \times 15}{0.87 \times 415}=15.03cm^2$$
    $$\frac{A_st}{B}=\frac{15.03}{2.85}=640 cm^2/m$$
   Minimum steel for average value of $D =\frac{(60+15)}{2}=37.5$ regarding footings as slabs,
-  $$A_st(min)=0.12\times37.5=4.20 cm^2/m$$
-  Provide $\phi$ $12/17$ $c/c$ bothways, area=6.65 cm^2/m
-
+  $$A_st(min)=0.12\times 37.5=4.20 cm^2/m$$
+  Provide $\phi$ $12/17$ $c/c$ bothways, $area=6.65 cm^2/m$
+  
 \item  \textbf{Design for beam shear}
   Equation (12.11 $a$)gives
   $$S_2-2=0.0198\times235\Bigg[\frac{(215-40)}{2}-54.8\Bigg]=152 kN$$
@@ -458,16 +455,15 @@ $$k=\frac{\Bigg[1-\left(\frac{a}{A}\right)^2
 \begin{enumerate}
 \item  $fck$ in $N/mm^2$
 \item $p$ in $kN/cm^2$b
-\item For rectangular column $a\timesb$
+\item For rectangular column $a\times b$
 Assume $a=\frac{(a+b)}{2}$ as in approximation provided $a/b$ <= $0.50.$
 \item Chart can be used for squarish rectangular footings provided an equal overhang is left beyond faces of column with $A=\frac{A+B}{2}$\\
 For equal overhang $(b-a)=(B-A)$
 \item $\alpha=1.0$ for types (a),(b) and (d)(Fig 12.1)
 \item $\alpha<1.0$ for type (c). Use equation(12.9)
 \item $\alpha=\frac{D_m}{d}+\frac{D-D_m}{d}.\frac{\left(1-\frac{a}{A}-\frac{d}{A}\right)}{\left(1-\frac{a}{A}\right)}-\frac{(c+\phi)}{d}$
-
 \end{enumerate}
-%---------------------------sage graph-------------------------------%
+%-----------------------------------sage graph--------------------%
 
  \begin{sagesilent}                                                      
         var('a,A,d,k')                                                  
@@ -481,7 +477,7 @@ For equal overhang $(b-a)=(B-A)$
         z5=plot(f(a=.25),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("brown"),   legend_label= "a/A = 0.25")
         z6=plot(f(a=.30),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("orange"),  legend_label= "a/A = 0.30")
         zz=z1+z2+z3+z4+z5+z6                                            
-                                                                        
+                                                                      
 \end{sagesilent}                                                        
                                                                         
 \begin{figure}                                                          
@@ -489,12 +485,12 @@ For equal overhang $(b-a)=(B-A)$
         \sageplot{zz,axes_labels=['$k$','$d/A$']}                       
 \end{center}                                                            
 \end{figure}    
-
 \end{enumerate}
+
 \section{Conclusion}
 Provisions of the Code on footings have been applied to individual spread footings, square, or rectangular in plan with depth uniform, varying or stepped. Design aids are given for ﬁxing depth of footings and checking it in respect of requirements of safety in perimeter shear.Procedure for design of footings for bending moment, shear and development length of tension steel bars is given in detail and examples are given to illustrate it. For a large-sized rectangular footing, a footing beam in the long direction will be more economical than the traditional isolated footing. Also, for large square footings, two cross footing beams with a uniform base slab will make for economy.
 
-%---------------------------table -------------------------------%
+%-----------------------------------table--------------------------------%
 
 \begin{table}
 \centering
