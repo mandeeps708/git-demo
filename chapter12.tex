@@ -591,7 +591,7 @@ $$D = \sage{f1(A)} = \sage{s4} \cmmacro$$
   
   f3(a,A)=a/A
   s6=f3(a,A)
-  s7=f3(aa,s1)
+  s7=f3(aa,s1).n(digits=3)
 
   f4(A,q)=q*A
   s8=f4(A,s7)
@@ -827,78 +827,276 @@ $$p= \sage{divv.n(digits=4)}$$
 %==================================================================%
 \begin{comment}
 
+<<<<<<< HEAD
+%\end{example}%------------------second numerical example-----------------%
+\textbf{Example 12.2. Rectangular sloped footing of Type ($c$).}\\
+\textbf{Given:}
+Same as in Ex. 12.1 with
+
+\begin{sagesilent}                                                      
+  var('aa,bb')                                                          
+  aa = 40                                                               
+  bb = 60                                                               
+\end{sagesilent}                                                        
+                                                                        
+$$a = \sage{aa} cm$$                                                    
+$$b = \sage{bb} cm$$ 
+
+=======
 $$a = 40 \cmmacro$$
 $$b = 60 \cmmacro$$ 
+>>>>>>> 33790b809874e45c8ceafec7ec55b333e930d3af
 and the footing is to have equal overhangs on all sides of column.\\
 \textbf{Required:} Design the footing\\
 \textbf{Solution:}
 
 \begin{enumerate}
+\begin{sagesilent}
+  m1(P,p) = P/p
+  q1 = m1(P,p)
+  q2 = m1(PP,pp).n(digits=4)
+  m2(a,b) = b - a
+  q3 = m2(a,b)
+  q4 = m2(A,B)
+  q5 = m2(aa,bb)
+
+  m3(A) = A*(q5+A)-q2
+  assume(A>0)
+  q6 = solve(m3(A),A,solution_dict=true)
+  q7 = q6[0][A]
+  q7 = q7.n(digits=4)
+  q7 = ceil(q7)
+  m4(A) = q5+A
+  q8 = m4(q7)
+
+  q9 = multipleCheck(q7,5)
+  q10 = multipleCheck(q8,5)
+
+  m5(P,A,B) = P/(A*B)
+  q11 = m5(P,A,B)
+  q12 = m5(PP,q9,q10)
+  q12 = q12.n(digits=3)
+\end{sagesilent}
 \item   \textbf{Dimensions of footing}\\
   \equmacro \ref{eq:footingArea} gives,
+<<<<<<< HEAD
+
+  $$A \times B = \sage{q1} = \sage{q2}$$  
+
+=======
   $$ A\times B= \frac{1000}{0.02}=50000 \cmsquaremacro$$
+>>>>>>> 33790b809874e45c8ceafec7ec55b333e930d3af
   The equal overhang condition, \equmacro \ref{eq:shape} gives,
-  $$ b-a=B-A=20 cm$$
+  $$\sage{q3} = \sage{q4} = \sage{q5}$$
+  
   The solution of these two equations gives,
-  $$A=214 cm$$
-  $$B=234 cm$$
-  Practical designer may choose A = 215 cm and B=235 cm
-  $$p=\frac{1000}{215\times235}=0.0198  kN/cm^2$$
-  \tablemacro \ref{chaptertable} gives for $p$ = 0.02 and steel \Fefouronefivemacro,
- $$\frac{D}{A}=\frac{1}{4.5}\times1.20$$
- $$D=\frac{(215+23)}{2 \times 4.5} \times 1.20=60cm$$
- $$D=60 \text{cm and} D_m=15cm$$
+  $$A = \sage{q7} cm$$
+  $$B = \sage{q8} cm$$
+
+  Practical designer may choose $A = \sage{q9} cm$ and $B = \sage{q10} cm$
+  $$p = \sage{q11} = \sage{q12} kN/cm^2$$
+  
+  \tablemacro \ref{chaptertable} gives for $p = .02$ and steel \Fefouronefivemacro,
+ 
+\begin{sagesilent}
+  m6(A,B) = ((A+B)/(2*4.5))*1.20
+  q13 = m6(A,B)
+  q14 = m6(q9,q10)
+
+  m7(D) = .25*D
+  q15 = m7(q14)
+\end{sagesilent}
+
+  $$\frac{D}{A}=\frac{1}{4.5}\times1.20$$
+  $$D = \sage{q13} = \sage{q14.n(digits=2)} cm$$
+  $$D = \sage{q14.n(digits=2)} cm \text{ and } D_m = \sage{q15.n(digits=2)} cm$$
  
 \item  \textbf{Check for perimeter shear}\\
- \equmacro \ref{eq:depth-cover} gives, with c = 4.0 cm, $\phi$ = 1.2 cm,
- $$d=60-(4.0+1.2)=54.8cm$$
- \equmacro \ref{eq:shape} gives,
- $$ \alpha=\frac{15}{54.8}+\frac{(60-15)}{54.8}.\frac{\Bigg(1-\frac{40}{215}-
-\frac{54.8}{215}\Bigg)}{\Bigg(1-\frac{40}{215}\Bigg)}-\frac{(4.0+1.2)}{54.8}$$
- $$=\frac{1}{54.8}(15+30.91-5.2)=0.74$$
+ 
+\begin{sagesilent}
+  var('c,phi')
+  cc = 4
+  pphi = 1.2
+  m8(D,c,phi) = D-(c+phi)
+  q16 = m8(D,c,phi)
+  q17 = m8(q14,cc,pphi)
+
+
+  m9(D,D_m,d,a,A,c,phi) = (D_m/d)+(((D-D_m)/d)*((1-(a/A)-(d/A))/(1-(a/A))))-((c+phi)/d)
+  q18 = m9(D,D_m,d,a,A,c,phi)
+  q19 = m9(q14,q15,q17,aa,q9,cc,pphi).n(digits=2)
+
+  m10(f_ck,p,alpha) = (.067.n(digits=2)*((f_ck)^(1/2))*alpha)/p 
+  q20 = m10(f_ck,p,alpha)
+  q21 = m10(ff_ck,q12,q19).n(digits=3)
+
+  m11(a,b,A,B) = ((a+b)/2)/((A+B)/2)
+  q22 = m11(a,b,A,B)
+  q23 = m11(aa,bb,q9,q10).n(digits=2)
+
+  m12(a,k) = 1/(-1/2*(a*k + 2*a - sqrt(a^2*k^2 + 4*k + 4))/(k + 1))
+  q24 = m12(a/A,k)
+  q25 = m12(q23,q21).n(digits=3)
+
+  m13(A) = A/q25
+  q26 = m13(A)
+  q27 = m13(q9)
+
+  m14(d,c,phi) = d+c+phi
+  q28 = m14(d,c,phi)
+  q29 = m14(q27,cc,pphi)
+  
+  if(q14>q29):
+    q30 = q14.n(digits=2)
+  else:
+    q30 = q29.n(digits=2)
+\end{sagesilent}
+  
+\equmacro \ref{eq:depth-cover} gives, with $c = \sage{cc} cm$, $\phi = \sage{pphi.n(digits=2)} cm$,
+$$d = \sage{q16} = \sage{q17.n(digits=3)} cm$$
+\equmacro \ref{eq:shape} gives,
+$$\alpha = \sage{q18} = \sage{q19}$$
+
  \chartmacro \ref{Dummy chart} gives for,
- $$ k=\frac{0.067\sqrt{15}\times0.74}{0.0198}=9.70$$
- $$\frac{a}{A} \text{(average value)}=\frac{(43+60)/2}{(215+285)/2}=\frac{50}{225}=0.22$$
- $$\frac{d}{A}=0.195 \text{ or d}=0.195\times225=43.9 cm$$
- $$D=43.9+4.0+1.2=49.1 cm$$
- $$D=60 \text{cm is safe in perimeter shear.}$$
+ $$k = \sage{q20} = \sage{q21}$$
+ $$\frac{a}{A} \text{(average value)}= \sage{q22} = \sage{q23}$$
+ 
+ $$\frac{A}{d} = \sage{q25} \text{ or d } = \sage{q26} = \sage{q27}$$
+ 
+ $$D = \sage{q28} =\sage{q29} cm$$
+ $$D = \sage{q30} \text{ cm is safie in perimeter shear.}$$
  
 \item  \textbf{Design for moment}\\
+
+\begin{sagesilent}
+  m15(p,B,A,a) = (p*B*((A-a)^2))/8
+  q31 = m15(p,B,A,a)
+  q32 = m15(q12,q10,q9,aa).n(digits=4)
+
+  m16(D,D_m,B,b) = (D-D_m)/((B-b)/2)
+  q33 = m16(D,D_m,B,b)
+  q34 = m16(q30,q15,q10,bb).n(digits=4)
+
+  m17(d,b,tan_beta) = d/(b*tan_beta)
+  q35 = m17(d,b,tan_beta)
+  q36 = m17(q17,bb,q34).n(digits=2)
+
+  var('M11', latex_name="M_{1-1}") 
+  m18(gamma_f,M11,f_ck,b,d) = (gamma_f*M11)/(f_ck*b*(d)^2)
+  q37 = m18(gamma_f,M11,f_ck,b,d)
+  q38 = m18(q36,q32,1.5,bb,q17)
+
+  var('mmu')
+  mmu = 0.11.n(digits=2)
+
+  m19(mu,b,d,f_y,f_ck) = (mu*b*d*f_ck)/(QQ(0.87)*f_y)
+  q39 = m19(mu,b,d,f_y,f_ck)
+  q40 = m19(mmu,bb,q17,ff_y,ff_ck).n(digits=4)
+
+  m20(A_st,B)=100*A_st/B
+  q41 = m20(A_st,B)
+  q42 = m20(q40,q10).n(digits=2)
+
+  m21(D,D_m) = (D+D_m)/2
+  q43 = m21(D,D_m)
+  q44 = m21(q30,q15).n(digits=3)
+
+  m22(D) = .12*D
+  q45 = m22(D)
+  q46 = m22(q44)
+\end{sagesilent}
+
    \equmacro \ref{eq:criticalMoment} gives,
-   $$M_{1-1}=0.0198 \times 235(215-40)^2/8=17812 kN cm$$
+
+   $$M_{1-1} = \sage{q31} = \sage{q32} kNcm$$
    with trapezoidal compression zone, Chart 4.1 gives for,
-   $$b=60cm, d=54.8 cm$$
-   $$tan\beta =\frac{(D-D_m)}{(B-b)/2}=\frac{45}{87.5}=0.514$$
-   $$\gamma=\frac{54.8}{60\times0.514}=1.8$$
+   $$b = \sage{bb} cm, d = \sage{q17.n(digits=3)} cm$$
+
+   $$\tan\beta = \sage{q33} = \sage{q34}$$
+   $$B = \sage{q10},D = \sage{q30}, D_m = \sage{q15}, b = \sage{bb}$$
+   $$f_ck = \sage{ff_ck}, f_y = \sage{ff_y}$$
+
+   $$\gamma = \frac{d}{b \times \tan\beta} = \sage{q36}$$
+  
+   $$k = \sage{q37} = \sage{q38}$$
    $$k=\frac{1.5 \times 17812}{1.5 \times 60 \times (54.8)^2}=0.099$$
-   $$\mu=0.11$$
-   $$A_{st}=\frac{0.11 \times 60 \times 54.8 \times 15}{0.87 \times 415}=15.03cm^2$$
-   $$\frac{A_{st}}{B}=\frac{15.03}{2.25}=640 cm^2/m$$
-  Minimum steel for average value of $D =\dfrac{(60+15)}{2}=37.5$ 
-  regarding footings as slabs,
-  $$A_{st}(min)=0.12\times 37.5=4.20 cm^2/m$$
-  Provide $\phi$ $12/17$ $c/c$ bothways, $area=6.65 cm^2/m$
+   
+   $$\mu = \sage{mmu}$$
+   
+   $$A_{st} = \sage{q39} = \sage{q40} cm^2/m$$
+
+   $$\frac{A_{st}}{B}= \sage{q42} cm^2/m$$
+   Minimum steel for average value of $D = \sage{q43} = \sage{q44}$ 
+   regarding footings as slabs,
+   $$A_{st}(min)=0.12\times \sage{q44} = \sage{q46} cm^2/m$$
+   Provide $\phi$ $12/17$ $c/c$ bothways, $area=6.65 cm^2/m$
   
 \item  \textbf{Design for beam shear}
+
+\begin{sagesilent}
+  m23(p,A,B,a,d_m) = p*B*(((A-a)/2)-d_m)
+  q47 = m23(p,A,B,a,d_m)
+  q48 = m23(q12,q9,q10,aa,q17).n(digits=3)
+
+  m24(D_m,D,a,A,d) = D_m+(D-D_m)*((1-(a/A)-2*(d/A))/(1-(a/A)))
+  q49 = m24(D_m,D,a,A,d)
+  q50 = m24(q15,q30,aa,q9,q17).n(digits=3)
+
+  var('Di', latex_name="D'")
+  m25(Di,c,phi) = Di-(c+phi)
+  q51 = m25(Di,c,phi)
+  q52 = m25(q50,cc,pphi)
+
+  m26(a,b,A,B,d) = b+(2*((B-b)/(A-a))*d)
+  q53 = m26(a,b,A,B,d)
+  q54 = m26(aa,bb,q9,q10,q17).n(digits=4)
+
+  m27(a,b,A,B,p,d) = p*(B/2)*((((A-a)/2)-d)^2)
+  q56 = m27(a,b,A,B,p,d)
+  q57 = m27(aa,bb,q9,q10,q12,q17).n(digits=5)
+
+  var('S22', latex_name="S_{2-2}")
+  
+  m28(S22) = 1.5*S22
+  q58 = m28(S22)
+  q59 = m28(q48)
+
+  m29(Vu,b,d,Mu,t) = (Vu/(b*d))-((1.5*Mu*t)/(b*(d^2)))
+  q60 = m29(Vu,b,d,Mu,t)
+  q61 = m29(q59,q54,q52,q57,q34)
+\end{sagesilent}`
+
   \equmacro (\ref{eq:shear22})gives
-  $$S_{2-2}=0.0198\times235\Bigg[\frac{(215-40)}{2}-54.8\Bigg]=152 kN$$
+  $$p=\sage{q12},A=\sage{q9},B=\sage{q10},a=\sage{aa},D_m=\sage{q15}$$ 
+  $$S_{2-2} = \sage{q47} = \sage{q48} kN$$
+  
   \equmacro (\ref{eq:ultimatemoment22}) gives,
-  $$D'=15+(60-15)\frac{\Bigg(1-\frac{40}{215}-2\times \frac{54.8}{215}\Bigg)}{\Bigg(1-\frac{40}{215}\Bigg)}$$
-  $$=15+16.8=31.8 cm$$
+  
+  $$D' = \sage{q49} = \sage{q50} cm$$
+  
   \equmacro (\ref{eq:ultimatemoment22b}) gives,
-  $$ d'=31.8-5.2=26.6 cm$$
+  
+  
+  $$d' = \sage{q51} = \sage{q52} cm$$ 
  \equmacro (\ref{eq:ultimatemoment22c}) gives,
-  $$b'=b+2\frac{(B-b)}{(A-a)}\times d=65+2\times \frac{175}{175}\times 54.8=169.6 cm$$
+
+  $$b' = \sage{q53} = \sage{q54} cm$$
+  
   \equmacro (\ref{eq:moment22}) gives
-  $$M_2-2=0.0198\times 235(87.6-54.8)^2/2=2488 kN cm$$ 
+
+  $$M_{2-2} = \sage{q56} = \sage{q57} kNcm$$
+  
   \equmacro \ref{eq:clause40.1.1} gives,
-  $$\tau_v=\frac{1.5\times 152}{169.6\times26.6}-\frac{1.5\times 2488}{169.6\times (26.6)^2}\times 0.514$$
-  $$=0.050-0.016=0.034 kN cm^2$$
+  
+  $$\tau_v = \frac{\sage{q59}}{\sage{q54} \times \sage{q52}}-\frac{1.5 \times \sage{q57} \times \sage{q34}}{\sage{q54} \times (\sage{q52})^2}$$
+
+  $$\tau_v = \sage{q61} kNcm^2$$
+  
   For
   $$\frac{100A_s}{b'd'}\frac{100\times6.65}{100\times26.6}=0.25,$$
   \tablemacro 19 gives ${\tau_c}$ = 0.035 \text{$kN/cm^2$}
   $$k=1.0,  {\tau_a}= {\tau_c}=0.035 kN/cm^2>{\tau_u}=0.034 kN/cm^2,$$
-$$D=60 \text{cm is safe in beam shear}$$  
+  $$D=60 \text{cm is safe in beam shear}$$  
   
 \item  \textbf{Check on development length of footing bars}\\
 \tablemacro (11.3)gives for $\phi$ 12 bars
@@ -917,16 +1115,16 @@ $$y=\Bigg[\frac{(215-40)}{2}-4.00\Bigg]=83.5 \text{cm } > 66 \text{cm OK,}$$
 \begin{sagesilent}                                                      
         var('a,A,d,k')                                                  
         f(k)=(1-(a**2)-(2*(a**2)*(d))-(d**2))/((a*d)+d**2)              
-        solve(f(k) == k,d)                                              
+        w1 = solve(f(k) == k,d,solution_dict=true)                                              
+        w2 = w1[1][d]
         f(d) = -1/2*(2*a^2 + a*k - sqrt(4*a^4 + a^2*k^2 - 4*a^2 + 4*(a^3 - a^2 + 1)*k + 4))/(k + 1)
-        z1=plot(f(a=.05),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("green"),   legend_label= "a/A = 0.05")
-        z2=plot(f(a=.1),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("red"),      legend_label= "a/A = 0.10")
-        z3=plot(f(a=.15),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("yellow"),  legend_label= "a/A = 0.15")
-        z4=plot(f(a=.20),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("blue"),    legend_label= "a/A = 0.20")
-        z5=plot(f(a=.25),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("brown"),   legend_label= "a/A = 0.25")
-        z6=plot(f(a=.30),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("orange"),  legend_label= "a/A = 0.30")
+        z1=plot(w2(a=.05),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("green"),   legend_label= "a/A = 0.05")
+        z2=plot(w2(a=.1),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("red"),      legend_label= "a/A = 0.10")
+        z3=plot(w2(a=.15),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("yellow"),  legend_label= "a/A = 0.15")
+        z4=plot(w2(a=.20),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("blue"),    legend_label= "a/A = 0.20")
+        z5=plot(w2(a=.25),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("brown"),   legend_label= "a/A = 0.25")
+        z6=plot(w2(a=.30),k,0,100,ymin=0,ymax=.30,figsize=(6.5,3),color=("orange"),  legend_label= "a/A = 0.30")
         zz=z1+z2+z3+z4+z5+z6                                            
-                                                                      
 \end{sagesilent}                                                        
 \begin{chart}          
         \begin{center}                                                     
