@@ -64,3 +64,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+sage-plots-for-main.tex
+*.bib
+*.bcf
+*.loc
+*.lof
+*.lot
+*.xml
+
