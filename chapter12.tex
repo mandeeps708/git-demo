@@ -773,61 +773,7 @@ It may be noted that with $D$ = $\sage{s11}$  $\cmmacro$, this type of footing
 of uniform depth is   not economical. Footing of Types ($b$) and ($c$)
 with sloping depth would be more economical than   the present design.
 \end{enumerate}
-%==================== second numerical example =======================%
-\textbf{Example 12.2. Rectangular sloped footing of Type ($c$).}\\
-\textbf{Given:}\\
-Same as in Ex. 12.1 with
-\begin{sagesilent}
- var('avalue,bvalue')
- avalue = 40
- bvalue = 60
-\end{sagesilent}
 
-
-\begin{sagesilent}
- var('B,A,b,a')
- func1(B,A)=B-A
- func2(b,a)=b-a
-
- subf=func1(B,A)
- subf2=func2(b,a)
- subv=func1(bvalue,avalue) 
-\end{sagesilent}
-
-\begin{sagesilent}
- var('A,B,pp')
- A = 215
- B = 235
-
- func3(P) = P/(A*B)
-
- divf=func3(P)
- divv = func3(1000)
-\end{sagesilent}
-
-$$a = \sage{avalue} \cmmacro$$
-$$b = \sage{bvalue} \cmmacro$$ 
-and the footing is to have equal overhangs on all sides of column.\\
-\textbf{Required:} Design the footing\\
-\textbf{Solution:} Dimension of footing
-
-\equmacro \ref{eq:footingArea} gives,        
-$$A^2 = \sage{s0} = \sage{s.n(digits=5)} \cmsquaremacro$$
-
-The equal overhang condition, \equmacro \ref{eq:shape} gives,
-$$\sage{subf2} = \sage{subf}=\sage{subv}$$
-
-The solution of these two equations gives, 
-$$A=\sage{A}  \cmmacro$$
-$$B=\sage{B} \cmmacro$$
-
-Practical designer may choose A = \sage{A} \cmmacro and B = \sage{B}\cmmacro  
-$$p=\sage{divf}$$
-$$p= \sage{divv.n(digits=4)}$$
-%==================================================================%
-\begin{comment}
-
-<<<<<<< HEAD
 %\end{example}%------------------second numerical example-----------------%
 \textbf{Example 12.2. Rectangular sloped footing of Type ($c$).}\\
 \textbf{Given:}
@@ -842,10 +788,6 @@ Same as in Ex. 12.1 with
 $$a = \sage{aa} cm$$                                                    
 $$b = \sage{bb} cm$$ 
 
-=======
-$$a = 40 \cmmacro$$
-$$b = 60 \cmmacro$$ 
->>>>>>> 33790b809874e45c8ceafec7ec55b333e930d3af
 and the footing is to have equal overhangs on all sides of column.\\
 \textbf{Required:} Design the footing\\
 \textbf{Solution:}
@@ -879,13 +821,10 @@ and the footing is to have equal overhangs on all sides of column.\\
 \end{sagesilent}
 \item   \textbf{Dimensions of footing}\\
   \equmacro \ref{eq:footingArea} gives,
-<<<<<<< HEAD
 
   $$A \times B = \sage{q1} = \sage{q2}$$  
 
-=======
   $$ A\times B= \frac{1000}{0.02}=50000 \cmsquaremacro$$
->>>>>>> 33790b809874e45c8ceafec7ec55b333e930d3af
   The equal overhang condition, \equmacro \ref{eq:shape} gives,
   $$\sage{q3} = \sage{q4} = \sage{q5}$$
   
@@ -1004,6 +943,24 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   m22(D) = .12*D
   q45 = m22(D)
   q46 = m22(q44)
+
+  var('diaa')
+  diaa = 12
+
+  if(q42>q46):
+    q199 = q42
+
+  else:
+    q199 = q46
+
+  m200(dia,qqq) = (3.14*((dia)^2))/(qqq*4)
+  q200 = m200(dia,qqq)
+  q201 = m200(diaa,q199)
+  q201 = int(q201)
+
+  m201(dia,qqq) = (3.14*((dia)^2)*1)/(4*qqq)
+  q202 = m201(dia,qqq)
+  q203 = m201(diaa,q201).n(digits=3)
 \end{sagesilent}
 
    \equmacro \ref{eq:criticalMoment} gives,
@@ -1028,8 +985,10 @@ $$\alpha = \sage{q18} = \sage{q19}$$
    $$\frac{A_{st}}{B}= \sage{q42} cm^2/m$$
    Minimum steel for average value of $D = \sage{q43} = \sage{q44}$ 
    regarding footings as slabs,
+   
    $$A_{st}(min)=0.12\times \sage{q44} = \sage{q46} cm^2/m$$
-   Provide $\phi$ $12/17$ $c/c$ bothways, $area=6.65 cm^2/m$
+
+   Provide $\phi$ $12/\sage{q201}$ $c/c$ bothways, $area= \sage{q203} cm^2/m$
   
 \item  \textbf{Design for beam shear}
 
@@ -1064,7 +1023,20 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   m29(Vu,b,d,Mu,t) = (Vu/(b*d))-((1.5*Mu*t)/(b*(d^2)))
   q60 = m29(Vu,b,d,Mu,t)
   q61 = m29(q59,q54,q52,q57,q34)
-\end{sagesilent}`
+
+  var('b', latex_name="b^{'}")
+  var('d', latex_name="d^{'}") 
+  m30(A_s,b,d) = (100*A_s)/((b)*(d))
+  q62 = m30(A_s,b,d)
+  q63 = m30(q203,100,q52)
+
+  var('tau_c')
+  tau_c = 0.035
+  
+  m33(phi) = 55*phi
+  q68 = m33(phi)
+  q69 = m33(diaa/10)
+\end{sagesilent}
 
   \equmacro (\ref{eq:shear22})gives
   $$p=\sage{q12},A=\sage{q9},B=\sage{q10},a=\sage{aa},D_m=\sage{q15}$$ 
@@ -1093,14 +1065,18 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   $$\tau_v = \sage{q61} kNcm^2$$
   
   For
+
+  $$\sage{q62} = \sage{q63}$$
+
   $$\frac{100A_s}{b'd'}\frac{100\times6.65}{100\times26.6}=0.25,$$
   \tablemacro 19 gives ${\tau_c}$ = 0.035 \text{$kN/cm^2$}
-  $$k=1.0,  {\tau_a}= {\tau_c}=0.035 kN/cm^2>{\tau_u}=0.034 kN/cm^2,$$
-  $$D=60 \text{cm is safe in beam shear}$$  
+  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c} kN/cm^2 > {\tau_u}=0.034 kN/cm^2,$$
+  $$D = \sage{q30} \text{cm is safe in beam shear}$$  
   
 \item  \textbf{Check on development length of footing bars}\\
 \tablemacro (11.3)gives for $\phi$ 12 bars
-$$L_d (tension)=55\times1.2=66cm$$
+
+$$L_d (tension) = \sage{q68} = \sage{q69} cm$$
 \chartmacro \ref{Dummy chart} Effective Depth (($d$) of Square Individual Footings for Safety in perimeter shear.
 $$k=\frac{\Bigg[1-\left(\frac{a}{A}\right)^2
 -2\left(\frac{a}{A}\right)^2\left( \frac{d}{A}\right)-\left(\frac{d}{A}\right)^2\Bigg]}{\Bigg[\left(\frac{a}{A}\right)\left(\frac{d}{A}\right)+\left(\frac{d}{A}\right)^2\Bigg]}$$
@@ -1108,7 +1084,6 @@ $$k=0.067\frac{\sqrt{f_{ck}}}{p}$$
 \equmacro \ref{eq:uniformallydeepfooting} gives,
 $$y=\Bigg[\frac{(215-40)}{2}-4.00\Bigg]=83.5 \text{cm } > 66 \text{cm OK,}$$
 \end{enumerate}
-\end{comment}
 
 %=================================================================================%
 %--------------------------------sage graph---------------------------------------%
