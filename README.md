@@ -13,4 +13,7 @@ To run:
     2)biber main
     3)sage main.sagetex.sage
     4)pdflatex main.tex
-    
+
+To create  pdf through script run:
+--------------------------
+    ./run

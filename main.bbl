@@ -1,0 +1,98 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{aci31877}{standard}{}
+      \name{labelname}{1}{}{%
+        {{hash=c97041e3ef4024449101dbdca9564963}{318}{3\bibinitperiod}{ACI\bibnamedelima Committee}{A\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=c97041e3ef4024449101dbdca9564963}{318}{3\bibinitperiod}{ACI\bibnamedelima Committee}{A\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {American Concrete Institute}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{organization}{1}{%
+        {American Concrete Institute}%
+      }
+      \strng{namehash}{c97041e3ef4024449101dbdca9564963}
+      \strng{fullhash}{c97041e3ef4024449101dbdca9564963}
+      \field{sortinit}{3}
+      \field{labeltitle}{ACI Standard Building Code Requirements for Reinforced Concrete (ACI 318-77)}
+      \field{number}{ACI standard 318-77}
+      \field{title}{ACI Standard Building Code Requirements for Reinforced Concrete (ACI 318-77)}
+      \field{year}{1981}
+    \endentry
+    \entry{aci1981aci}{book}{}
+      \name{labelname}{1}{}{%
+        {{hash=d5fbb392f12ae35c5b7e1bc0659ce4eb}{{ACI\bibnamedelimb Committee\bibnamedelimb 318}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=d5fbb392f12ae35c5b7e1bc0659ce4eb}{{ACI\bibnamedelimb Committee\bibnamedelimb 318}}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {American Concrete Institute}%
+      }
+      \strng{namehash}{d5fbb392f12ae35c5b7e1bc0659ce4eb}
+      \strng{fullhash}{d5fbb392f12ae35c5b7e1bc0659ce4eb}
+      \field{sortinit}{A}
+      \field{labeltitle}{ACI Standard Building Code Requirements for Reinforced Concrete (ACI 318-77)}
+      \field{series}{ACI standard 318-77}
+      \field{title}{ACI Standard Building Code Requirements for Reinforced Concrete (ACI 318-77)}
+      \field{year}{1981}
+      \verb{url}
+      \verb https://books.google.co.in/books?id=amEOfgtA-DYC
+      \endverb
+    \endentry
+    \entry{is4562000}{book}{}
+      \name{labelname}{1}{}{%
+        {{hash=53261ab0498587054b9e36189ad67881}{{Cement\bibnamedelimb and\bibnamedelimb Concrete\bibnamedelimb Sectional\bibnamedelimb Committee,\bibnamedelimb CED\bibnamedelimb 2}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=53261ab0498587054b9e36189ad67881}{{Cement\bibnamedelimb and\bibnamedelimb Concrete\bibnamedelimb Sectional\bibnamedelimb Committee,\bibnamedelimb CED\bibnamedelimb 2}}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Bureau of Indian Standards}%
+      }
+      \strng{namehash}{53261ab0498587054b9e36189ad67881}
+      \strng{fullhash}{53261ab0498587054b9e36189ad67881}
+      \field{sortinit}{C}
+      \field{labeltitle}{Indian Standard Plain and reinforced concrete--code of practice (IS 456 : 2000)}
+      \field{journaltitle}{New Delhi:}
+      \field{title}{Indian Standard Plain and reinforced concrete--code of practice (IS 456 : 2000)}
+      \field{year}{2000}
+    \endentry
+    \entry{IS1964}{book}{}
+      \field{sortinit}{I}
+      \field{labeltitle}{{IS456:1964}}
+      \field{title}{{IS456:1964}}
+    \endentry
+    \entry{IS2000}{book}{}
+      \field{sortinit}{I}
+      \field{labeltitle}{{IS456:2000}}
+      \field{title}{{IS456:2000}}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
