@@ -1,5 +1,7 @@
 \usepackage{geometry}
-\geometry{ a4paper,total={170mm,257mm}, left=20mm, top=20mm}
+% total specifies text width and height should not exceed 170mm,257mm.
+% right, bottom margins set automatically
+\geometry{a4paper,total={170mm,257mm}, left=20mm, top=20mm}
 \usepackage{sagetex}
 \usepackage{fancyhdr}
 \usepackage{amsmath}
@@ -7,21 +9,24 @@
 \usepackage{enumerate}
 \usepackage{pgfplotstable}
 \usepackage{booktabs}
-\newcommand{\figmacro}[1] {Fig. #1}
-\newcommand{\equmacro}[1] {Equation #1}
-\newcommand{\chartmacro}[1] {Chart #1}
-\newcommand{\tablemacro}[1] {Table #1}
-\newcommand{\Fefouronefivemacro}[1] {$Fe$ 415 #1}
-\newcommand{\Fefivezerozeromacro}[1] {$Fe$ 500 #1}
-\newcommand{\Fetwofivezeromacro}[1] {$Fe$ 250 #1}
-\newcommand{\kNmacro}[1] {  kN #1} 
-\newcommand{\kNmsquaremacro}[1] {  kN/m^2 #1}
-\newcommand{\cmmacro}[1] {  mm #1}
-\newcommand{\Nmmsquaremacro}[1] {  Nmm^2 #1}
-\newcommand{\cmsquaremacro}[1] {  m^2 #1}
-\newcommand{\cmsquaremetermacro}[1] {  cm^2/m #1}
-\DeclareCaptionType[fileext=loc]{chart}[Chart][List of Charts]
 \usepackage{graphicx}
-\usepackage[autostyle]{csquotes}
+%\usepackage[autostyle]{csquotes}
+\bibliographystyle{unsrt}
 \usepackage[backend=biber]{biblatex}
+%====================Macro Definition =====================%
+\newcommand{\fig}{Fig.}
+\newcommand{\eqn}{Equation}
+\newcommand{\chartm}{Chart}
+\newcommand{\tablem}{Table}
+\newcommand{\fefouronefive}{$Fe$ 415}
+\newcommand{\fefivezerozero}{$Fe$ 500}
+\newcommand{\fetwofivezero}{$Fe$ 250}
+\newcommand{\kn}{kN} 
+\newcommand{\knpms}{kN/m^2}
+\newcommand{\cm}{mm}
+\newcommand{\npmms}{N/mm^2}
+\newcommand{\ms}{m^2}
+\newcommand{\cmspm}{cm^2/m}
+\DeclareCaptionType{chart}
 \addbibresource{chapter12.bib}
+%\bibliography{chapter12} 
