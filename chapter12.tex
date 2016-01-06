@@ -1036,6 +1036,10 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   m33(phi) = 55*phi
   q68 = m33(phi)
   q69 = m33(diaa/10)
+
+  m34(A,a) = ((A-a)/2)-4
+  q70 = m34(A,a)
+  q71 = m34(q9,aa).n(digits=3)
 \end{sagesilent}
 
   \equmacro (\ref{eq:shear22})gives
@@ -1082,7 +1086,8 @@ $$k=\frac{\Bigg[1-\left(\frac{a}{A}\right)^2
 -2\left(\frac{a}{A}\right)^2\left( \frac{d}{A}\right)-\left(\frac{d}{A}\right)^2\Bigg]}{\Bigg[\left(\frac{a}{A}\right)\left(\frac{d}{A}\right)+\left(\frac{d}{A}\right)^2\Bigg]}$$
 $$k=0.067\frac{\sqrt{f_{ck}}}{p}$$
 \equmacro \ref{eq:uniformallydeepfooting} gives,
-$$y=\Bigg[\frac{(215-40)}{2}-4.00\Bigg]=83.5 \text{cm } > 66 \text{cm OK,}$$
+
+$$y = \sage{q70} = \sage{q71} cm > 66 cm \text{ OK,}$$
 \end{enumerate}
 
 %=================================================================================%
