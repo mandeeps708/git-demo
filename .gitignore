@@ -72,4 +72,7 @@ sage-plots-for-main.tex
 *.lof
 *.lot
 *.xml
+*.bbl
+*.blg
+*.lochart
 
