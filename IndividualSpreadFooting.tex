@@ -837,7 +837,7 @@ and the footing is to have equal overhangs on all sides of column.\\
   \tablem \ref{chaptertable} gives for $p = .02$ and steel \fefouronefive,
  
 \begin{sagesilent}
-  m6(A,B) = ((A+B)/(2*4.5))*1.20
+  m6(A,B) = ((A+B)/(QQ(2)*QQ(4.5)))*QQ(1.20)
   q13 = m6(A,B)
   q14 = m6(q9,q10)
 
@@ -969,7 +969,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
    $$b = \sage{bb} cm, d = \sage{q17.n(digits=3)} cm$$
 
    $$\tan\beta = \sage{q33} = \sage{q34}$$
-   $$B = \sage{q10},D = \sage{q30}, D_m = \sage{q15}, b = \sage{bb}$$
+   $$B = \sage{q10},D = \sage{q30}, D_m = \sage{q15.n(digits=3)}, b = \sage{bb}$$
    $$f_ck = \sage{ff_ck}, f_y = \sage{ff_y}$$
 
    $$\gamma = \frac{d}{b \times \tan\beta} = \sage{q36}$$
@@ -1042,7 +1042,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 \end{sagesilent}
 
   \eqn (\ref{eq:shear22})gives
-  $$p=\sage{q12},A=\sage{q9},B=\sage{q10},a=\sage{aa},D_m=\sage{q15}$$ 
+  $$p=\sage{q12},A=\sage{q9},B=\sage{q10},a=\sage{aa},D_m=\sage{q15.n(digits=3)}$$ 
   $$S_{2-2} = \sage{q47} = \sage{q48} kN$$
   
   \eqn (\ref{eq:ultimatemoment22}) gives,
@@ -1071,9 +1071,8 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 
   $$\sage{q62} = \sage{q63}$$
 
-  $$\frac{100A_s}{b'd'}\frac{100\times6.65}{100\times26.6}=0.25,$$
   \tablem 19 gives ${\tau_c}$ = 0.035 \text{$kN/cm^2$}
-  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c} kN/cm^2 > {\tau_u}=0.034 kN/cm^2,$$
+  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c.n(digits=3)} kN/cm^2 > {\tau_u}=0.034 kN/cm^2,$$
   $$D = \sage{q30} \text{cm is safe in beam shear}$$  
   
 \item  \textbf{Check on development length of footing bars}\\
