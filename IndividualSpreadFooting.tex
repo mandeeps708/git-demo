@@ -512,8 +512,8 @@ than the footings of uniform depth.
 \begin{sagesilent}
   var('PP,pp,aa,ff_ck,ff_y')
   PP = 1000
-  pp = .02
-  aa = 40
+  pp = .0002
+  aa = 400
   ff_ck = 15
   ff_y = 415
 \end{sagesilent}
@@ -587,7 +587,7 @@ $$D = \sage{f1(A)} = \sage{s4} \cm$$
   var('alpha')
   f2(f_ck,alpha,p)=(.067.n(digits=2)*((f_ck)^(1/2))*alpha)/p
   s5=f2(f_ck,alpha,p)
-  s66=f2(ff_ck,1,pp)
+  s66=f2(ff_ck,1,pp*100)
   
   f3(a,A)=a/A
   s6=f3(a,A)
@@ -631,8 +631,8 @@ $$d = \sage{s9}$$
 
 \begin{sagesilent}
   var('cc,pphi')
-  cc=4
-  pphi=1.2
+  cc=40
+  pphi=12
   f5(d,c,phi) = d + c + phi
   s10 = f5(d,c,phi)
   s11 = f5(s9,cc,pphi)
@@ -651,7 +651,7 @@ $$d = \sage{s9}$$
 
   f8(M_1,A,d) = (1.5*M_1)/(1.5*A*(d**2))
   s16=f8(M_1,A,d)
-  s17=f8(s13,s1,s15)
+  s17=f8(s13,s1,s15/10)
   
   if(s4>s107):
     s109=s4
@@ -687,12 +687,13 @@ $$k = \sage{s17.n(digits=4)}$$
   f10(A_st,A)=A_st/A
   s20=f10(A_st,A)
   
-  s21=s1/100
+  s21=s1/1000
   s22=f10(s19,s21)
   
-  f11(D) = .12.n(digits=2)*D
+  f11(D) = 1.2.n(digits=2)*D
   s23=f11(D)
-  s24=f11(s11)
+  #s24=f11(s11)
+  s24 = f11(s109)
 
   d1= (1000)/(120)
   d3=d1.n(digits=0)
@@ -700,16 +701,35 @@ $$k = \sage{s17.n(digits=4)}$$
   d2=w1(d3,6)
   d2 = d2.n(digits=2)
 
+  if(s22>s24):
+    q299 = s22
+  else:
+    q299 = s24
+
+
+  diaa = 12
+  m300(dia,qqq) = (3.14*1000*((dia)^2))/(qqq*4)                              
+  q300 = m300(dia,qqq)                                                  
+  q301 = m300(diaa,q299)                                                
+  q301 = int(q301)                                                      
+                                                                       
+  m301(dia,qqq) = (3.14*1000*((dia)^2)*1)/(4*qqq)                            
+  q302 = m301(dia,qqq)                                                  
+  q303 = m301(diaa,q301).n(digits=4)  
+  d2 = q303
+
 \end{sagesilent}
 $$\mu = \sage{mu.n(digits=2)}$$
 $$A_{st} = \sage{s18} = \sage{s19} \ms$$
+
 $$\sage{s20} = \sage{s22} \cmspm$$
-        
-$\phi 12/12$ $c/c$ both ways provided giving an area$ = 9.42 \cmspm$      
-           
+ 
 \tablem 11.4 gives the minimum tension steel area in footings taken
 as slab,
+
 $$A_{st}(min) = \sage{s23} = \sage{s24} \cmspm$$
+
+$\phi 12/\sage{q301}$ $c/c$ both ways provided giving an area$ = \sage{q303} \cmspm$\\ 
 which is exceeded by that provided. 
 
 \item  \textbf{Design for beam shear}\\                              
@@ -726,13 +746,14 @@ which is exceeded by that provided.
   
   f14(A_s,b,d) = (100 * A_s)/(b*d)
   s29 = f14(A_s,b,d)
-  s30 = f14(d2,100,s15)
+  s30 = f14(d2,1000,s15)
 \end{sagesilent}
 
 $$S_{2-2} = \sage{s25} =\sage{s26.n(digits=4)} \kn$$
 \eqn \ref{eq:shearstress22} gives
 
 $$\tau = \sage{s27} = \sage{s28} \knpms$$
+
 $$\sage{s29} = \sage{s30}$$
         
 Table 19 of the \citetitle{IS2000} gives,
@@ -741,7 +762,7 @@ $$\sage{tau_c}=0.32 \npmms$$
 With                                                                    
 $$k = 1.0 $$                                                            
 \eqn \ref{eq:concretesolidslabs} gives,                            
-        $$\sage{tau_a}=\sage{tau_c}=0.032 \knpms$$                      
+        $$\sage{tau_a}=\sage{tau_c}=0.00032 \knpms$$                      
 With                                                                    
 $$\sage{tau_v}=\sage{tau_a}, D = 50 \cm \text{ is safe}$$                
                                                                         
@@ -753,7 +774,7 @@ $$\sage{tau_v}=\sage{tau_a}, D = 50 \cm \text{ is safe}$$
 \begin{sagesilent}
   f15(phi) = 55*phi
   s31 = f15(phi)
-  s32 = f15(1.2)
+  s32 = f15(diaa)
 
   f16(A,a) = (((A-a)/2)-4)
   s33 = f16(A,a)
@@ -769,7 +790,7 @@ $$y = \sage{s33} = \sage{s34} \cm$$
 with $y > L_d$ (tension), footing bars will develop full strength at
 the critical   section.
                                                                         
-It may be noted that with $D$ = $\sage{s11}$  $\cm$, this type of footing
+It may be noted that with $D$ = $\sage{s109}$  $\cm$, this type of footing
 of uniform depth is   not economical. Footing of Types ($b$) and ($c$)
 with sloping depth would be more economical than   the present design.
 \end{enumerate}
@@ -780,8 +801,8 @@ Same as in Ex. 12.1 with
 
 \begin{sagesilent}                                                      
   var('aa,bb')                                                          
-  aa = 40                                                               
-  bb = 60                                                               
+  aa = 400                                                               
+  bb = 600                                                               
 \end{sagesilent}                                                        
                                                                         
 $$a = \sage{aa} cm$$                                                    
@@ -853,8 +874,8 @@ and the footing is to have equal overhangs on all sides of column.\\
  
 \begin{sagesilent}
   var('c,phi')
-  cc = 4
-  pphi = 1.2
+  cc = 40
+  pphi = 12
   m8(D,c,phi) = D-(c+phi)
   q16 = m8(D,c,phi)
   q17 = m8(q14,cc,pphi)
@@ -866,7 +887,7 @@ and the footing is to have equal overhangs on all sides of column.\\
 
   m10(f_ck,p,alpha) = (.067.n(digits=2)*((f_ck)^(1/2))*alpha)/p 
   q20 = m10(f_ck,p,alpha)
-  q21 = m10(ff_ck,q12,q19).n(digits=3)
+  q21 = m10(ff_ck,q12*100,q19).n(digits=3)
 
   m11(a,b,A,B) = ((a+b)/2)/((A+B)/2)
   q22 = m11(a,b,A,B)
@@ -920,9 +941,9 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   q36 = m17(q17,bb,q34).n(digits=2)
 
   var('M11', latex_name="M_{1-1}") 
-  m18(gamma_f,M11,f_ck,b,d) = (gamma_f*M11)/(f_ck*b*(d)^2)
-  q37 = m18(gamma_f,M11,f_ck,b,d)
-  q38 = m18(q36,q32,1.5,bb,q17)
+  m18(gamma_f,M11,b,d) = (gamma_f*M11)/(QQ(1.5)*b*(d)^2)
+  q37 = m18(gamma_f,M11,b,d)
+  q38 = m18(q36,q32,bb,q17)
 
   var('mmu')
   mmu = 0.11.n(digits=2)
@@ -931,15 +952,15 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   q39 = m19(mu,b,d,f_y,f_ck)
   q40 = m19(mmu,bb,q17,ff_y,ff_ck).n(digits=4)
 
-  m20(A_st,B)=100*A_st/B
+  m20(A_st,B)=1000*A_st/B
   q41 = m20(A_st,B)
-  q42 = m20(q40,q10).n(digits=2)
+  q42 = m20(q40,q10)
 
   m21(D,D_m) = (D+D_m)/2
   q43 = m21(D,D_m)
   q44 = m21(q30,q15).n(digits=3)
 
-  m22(D) = .12*D
+  m22(D) = 1.2*D
   q45 = m22(D)
   q46 = m22(q44)
 
@@ -952,14 +973,14 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   else:
     q199 = q46
 
-  m200(dia,qqq) = (3.14*((dia)^2))/(qqq*4)
+  m200(dia,qqq) = (3.14*1000*((dia)^2))/(qqq*4)
   q200 = m200(dia,qqq)
   q201 = m200(diaa,q199)
   q201 = int(q201)
 
-  m201(dia,qqq) = (3.14*((dia)^2)*1)/(4*qqq)
+  m201(dia,qqq) = (3.14*1000*((dia)^2)*1)/(4*qqq)
   q202 = m201(dia,qqq)
-  q203 = m201(diaa,q201).n(digits=3)
+  q203 = m201(diaa,q201).n(digits=4)
 \end{sagesilent}
 
    \eqn \ref{eq:criticalMoment} gives,
@@ -975,7 +996,6 @@ $$\alpha = \sage{q18} = \sage{q19}$$
    $$\gamma = \frac{d}{b \times \tan\beta} = \sage{q36}$$
   
    $$k = \sage{q37} = \sage{q38}$$
-   $$k=\frac{1.5 \times 17812}{1.5 \times 60 \times (54.8)^2}=0.099$$
    
    $$\mu = \sage{mmu}$$
    
@@ -985,7 +1005,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
    Minimum steel for average value of $D = \sage{q43} = \sage{q44}$ 
    regarding footings as slabs,
    
-   $$A_{st}(min)=0.12\times \sage{q44} = \sage{q46} cm^2/m$$
+   $$A_{st}(min)=1.2\times \sage{q44} = \sage{q46} cm^2/m$$
 
    Provide $\phi$ $12/\sage{q201}$ $c/c$ bothways, $area= \sage{q203} cm^2/m$
   
@@ -1022,19 +1042,20 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   m29(Vu,b,d,Mu,t) = (Vu/(b*d))-((1.5*Mu*t)/(b*(d^2)))
   q60 = m29(Vu,b,d,Mu,t)
   q61 = m29(q59,q54,q52,q57,q34)
+  q61 = 100*q61  
 
   var('b', latex_name="b^{'}")
   var('d', latex_name="d^{'}") 
   m30(A_s,b,d) = (100*A_s)/((b)*(d))
   q62 = m30(A_s,b,d)
-  q63 = m30(q203,100,q52)
+  q63 = m30(q203,1000,q52)
 
   var('tau_c')
   tau_c = 0.035
   
   m33(phi) = 55*phi
   q68 = m33(phi)
-  q69 = m33(diaa/10)
+  q69 = m33(diaa)
 
   m34(A,a) = ((A-a)/2)-4
   q70 = m34(A,a)
@@ -1042,7 +1063,6 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 \end{sagesilent}
 
   \eqn (\ref{eq:shear22})gives
-  $$p=\sage{q12},A=\sage{q9},B=\sage{q10},a=\sage{aa},D_m=\sage{q15.n(digits=3)}$$ 
   $$S_{2-2} = \sage{q47} = \sage{q48} kN$$
   
   \eqn (\ref{eq:ultimatemoment22}) gives,
