@@ -512,7 +512,7 @@ than the footings of uniform depth.
 \begin{sagesilent}
   var('PP,pp,aa,ff_ck,ff_y')
   PP = 1000
-  pp = .0002
+  pp = 200
   aa = 400
   ff_ck = 15
   ff_y = 415
@@ -546,6 +546,9 @@ def multipleCheck(number, divisor=25):
 
 \begin{sagesilent}
   var('A,P,p')
+  
+  pp = pp/1000000.n(digits=2)
+
   f(P,p)=P/p
   A(P,p)=(f(P,p))^(1/2)
   
@@ -555,7 +558,8 @@ def multipleCheck(number, divisor=25):
   s1=multipleCheck(o1)
 \end{sagesilent}
 
-\eqn \ref{eq:footingArea} gives,        
+\eqn \ref{eq:footingArea} gives, 
+
 $$A^2 = \sage{s0} = \sage{s.n(digits=5)} \ms$$
 $$A = \sage{o1} \cm$$
 $$A = \sage{s1} \cm$$
@@ -563,7 +567,7 @@ $$A = \sage{s1} \cm$$
 \begin{sagesilent}
   p(A)=1000/(A*A)
   s2=p(s1)
-  s2 = s2.n(digits=4)
+  s2 = s2*1000000.n(digits=4)
 \end{sagesilent}
 
 Provided $\sage{s1} \times \sage{s1}$ base and  
@@ -618,16 +622,9 @@ $$D = \sage{f1(A)} = \sage{s4} \cm$$
 $$k = \sage{s5} = \sage{s66.n(digits=4)}$$
 $$\sage{s6} = \sage{s7}$$
 
-\begin{comment}
-$$d = \sage{s8} = \sage{s9.n(digits=3)}$$ 
-\end{comment}
-
-
 $$\sage{o5} = \sage{o4}$$
 
 $$d = \sage{s9}$$ 
-
-%$$d = \sage{s9}$$
 
 \begin{sagesilent}
   var('cc,pphi')
@@ -643,7 +640,7 @@ $$d = \sage{s9}$$
  
   f6(p,B,A,a) = p*B*((A-a)^2)/8
   s12 = f6(p,B,A,a)
-  s13 = f6(s2,s1,s1,aa)
+  s13 = f6(s2,s1/1000,s1/1000,aa/1000)
 
   f7(D,c,phi) = D-c-phi
   s14=f7(D,c,phi)
@@ -654,7 +651,7 @@ $$d = \sage{s9}$$
   s17=f8(s13,s1,s15/10)
   
   if(s4>s107):
-    s109=s4
+    s109 = multipleCheck(s4)
   else:
     s109 = multipleCheck(s107)
 \end{sagesilent}
@@ -665,8 +662,9 @@ $$D = \sage{s10} = \sage{s107} \cm$$
 $$D = \sage{s109} \cm \text{ is safe} $$
 
 \item  \textbf{Design for moment}  
-\eqn \ref{eq:criticalMoment} gives, 
-$$M_{1-1} = \sage{s12} = \sage{s13.n(digits=6)} \knpms$$
+\eqn \ref{eq:criticalMoment} gives,
+
+$$M_{1-1} = \sage{s12} = \sage{s13.n(digits=4)} \knpms$$
 
 With rectangular compression zone, \chartm (2.2) gives for,   
 $$d = \sage{s14} = \sage{s15.n(digits=4)}$$
@@ -738,11 +736,11 @@ which is exceeded by that provided.
 \begin{sagesilent}
   f12(p,A,a,d)=p*A*(((A-a)/2)-d)
   s25=f12(p,A,a,d)
-  s26=f12(s2,s1,aa,s15)
+  s26=f12(s2,s1/1000,aa/1000,s15/1000)
 
   f13(S_22,A,d) = (1.5.n(digits=2)*S_22)/(A*d)
   s27 = f13(S_22,A,d)
-  s28 = f13(s26,s1,s15)
+  s28 = f13(s26,s1,s15)*1000
   
   f14(A_s,b,d) = (100 * A_s)/(b*d)
   s29 = f14(A_s,b,d)
@@ -752,7 +750,7 @@ which is exceeded by that provided.
 $$S_{2-2} = \sage{s25} =\sage{s26.n(digits=4)} \kn$$
 \eqn \ref{eq:shearstress22} gives
 
-$$\tau = \sage{s27} = \sage{s28} \knpms$$
+$$\tau_{v} = \sage{s27} = \sage{s28} \knpms$$
 
 $$\sage{s29} = \sage{s30}$$
         
@@ -762,7 +760,7 @@ $$\sage{tau_c}=0.32 \npmms$$
 With                                                                    
 $$k = 1.0 $$                                                            
 \eqn \ref{eq:concretesolidslabs} gives,                            
-        $$\sage{tau_a}=\sage{tau_c}=0.00032 \knpms$$                      
+        $$\sage{tau_a}=\sage{tau_c}=0.32 \knpms$$                      
 With                                                                    
 $$\sage{tau_v}=\sage{tau_a}, D = 50 \cm \text{ is safe}$$                
                                                                         
@@ -836,7 +834,7 @@ and the footing is to have equal overhangs on all sides of column.\\
 
   m5(P,A,B) = P/(A*B)
   q11 = m5(P,A,B)
-  q12 = m5(PP,q9,q10)
+  q12 = m5(PP,q9/1000,q10/1000)
   q12 = q12.n(digits=3)
 \end{sagesilent}
 \item   \textbf{Dimensions of footing}\\
@@ -895,7 +893,8 @@ and the footing is to have equal overhangs on all sides of column.\\
 
   m12(a,k) = 1/(-1/2*(a*k + 2*a - sqrt(a^2*k^2 + 4*k + 4))/(k + 1))
   q24 = m12(a/A,k)
-  q25 = m12(q23,q21).n(digits=3)
+  #q25 = m12(q23,q21).n(digits=3)
+  q25 = m12(q23,9.7).n(digits=3)
 
   m13(A) = A/q25
   q26 = m13(A)
@@ -930,7 +929,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 \begin{sagesilent}
   m15(p,B,A,a) = (p*B*((A-a)^2))/8
   q31 = m15(p,B,A,a)
-  q32 = m15(q12,q10,q9,aa).n(digits=4)
+  q32 = m15(q12,q10/1000,q9/1000,aa/1000).n(digits=4)
 
   m16(D,D_m,B,b) = (D-D_m)/((B-b)/2)
   q33 = m16(D,D_m,B,b)
@@ -990,8 +989,6 @@ $$\alpha = \sage{q18} = \sage{q19}$$
    $$b = \sage{bb} cm, d = \sage{q17.n(digits=3)} cm$$
 
    $$\tan\beta = \sage{q33} = \sage{q34}$$
-   $$B = \sage{q10},D = \sage{q30}, D_m = \sage{q15.n(digits=3)}, b = \sage{bb}$$
-   $$f_ck = \sage{ff_ck}, f_y = \sage{ff_y}$$
 
    $$\gamma = \frac{d}{b \times \tan\beta} = \sage{q36}$$
   
@@ -1014,7 +1011,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 \begin{sagesilent}
   m23(p,A,B,a,d_m) = p*B*(((A-a)/2)-d_m)
   q47 = m23(p,A,B,a,d_m)
-  q48 = m23(q12,q9,q10,aa,q17).n(digits=3)
+  q48 = m23(q12,q9/1000,q10/1000,aa/1000,q17/1000).n(digits=3)
 
   m24(D_m,D,a,A,d) = D_m+(D-D_m)*((1-(a/A)-2*(d/A))/(1-(a/A)))
   q49 = m24(D_m,D,a,A,d)
@@ -1031,7 +1028,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 
   m27(a,b,A,B,p,d) = p*(B/2)*((((A-a)/2)-d)^2)
   q56 = m27(a,b,A,B,p,d)
-  q57 = m27(aa,bb,q9,q10,q12,q17).n(digits=5)
+  q57 = m27(aa/1000,bb/1000,q9/1000,q10/1000,q12,q17/1000).n(digits=5)
 
   var('S22', latex_name="S_{2-2}")
   
@@ -1042,7 +1039,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   m29(Vu,b,d,Mu,t) = (Vu/(b*d))-((1.5*Mu*t)/(b*(d^2)))
   q60 = m29(Vu,b,d,Mu,t)
   q61 = m29(q59,q54,q52,q57,q34)
-  q61 = 100*q61  
+  q61 = 1000*q61  
 
   var('b', latex_name="b^{'}")
   var('d', latex_name="d^{'}") 
@@ -1091,8 +1088,8 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 
   $$\sage{q62} = \sage{q63}$$
 
-  \tablem 19 gives ${\tau_c}$ = 0.035 \text{$kN/cm^2$}
-  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c.n(digits=3)} kN/cm^2 > {\tau_u}=0.034 kN/cm^2,$$
+  \tablem 19 gives ${\tau_c}$ = 0.35 \text{$kN/cm^2$}
+  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c.n(digits=3)} kN/cm^2 > {\tau_u}=0.34 kN/cm^2,$$
   $$D = \sage{q30} \text{cm is safe in beam shear}$$  
   
 \item  \textbf{Check on development length of footing bars}\\
@@ -1105,7 +1102,7 @@ $$k=\frac{\Bigg[1-\left(\frac{a}{A}\right)^2
 $$k=0.067\frac{\sqrt{f_{ck}}}{p}$$
 \eqn \ref{eq:uniformallydeepfooting} gives,
 
-$$y = \sage{q70} = \sage{q71} cm > 66 cm \text{ OK,}$$
+$$y = \sage{q70} = \sage{q71} cm > \sage{q69} cm \text{ OK,}$$
 \end{enumerate}
 
 %=================================================================================%
