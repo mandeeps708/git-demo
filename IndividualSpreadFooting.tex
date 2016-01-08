@@ -519,7 +519,7 @@ than the footings of uniform depth.
 \end{sagesilent}
 
 $$P = \sage{PP} \kn$$
-$$p = \sage{pp.n(digits=0)} \knpms$$
+$$p = \sage{pp.n(digits=1)} \knpms$$
 $$a = \sage{aa} \cm$$
 $$f_{ck} = \sage{ff_ck} \npmms$$
 $$f_y = \sage{ff_y} \npmms$$
@@ -648,7 +648,7 @@ $$d = \sage{s9}$$
 
   f8(M_1,A,d) = (1.5*M_1)/(1.5*A*(d**2))
   s16=f8(M_1,A,d)
-  s17=f8(s13,s1,s15/10)
+  s17=f8(s13*100,s1/10,s15/10)
   
   if(s4>s107):
     s109 = multipleCheck(s4)
@@ -885,7 +885,8 @@ and the footing is to have equal overhangs on all sides of column.\\
 
   m10(f_ck,p,alpha) = (.067.n(digits=2)*((f_ck)^(1/2))*alpha)/p 
   q20 = m10(f_ck,p,alpha)
-  q21 = m10(ff_ck,q12*100,q19).n(digits=3)
+  q21 = m10(ff_ck,q12,q19).n(digits=3)
+  q21 = q21*10000
 
   m11(a,b,A,B) = ((a+b)/2)/((A+B)/2)
   q22 = m11(a,b,A,B)
@@ -894,7 +895,7 @@ and the footing is to have equal overhangs on all sides of column.\\
   m12(a,k) = 1/(-1/2*(a*k + 2*a - sqrt(a^2*k^2 + 4*k + 4))/(k + 1))
   q24 = m12(a/A,k)
   #q25 = m12(q23,q21).n(digits=3)
-  q25 = m12(q23,9.7).n(digits=3)
+  q25 = m12(q23,q21).n(digits=3)
 
   m13(A) = A/q25
   q26 = m13(A)
@@ -943,6 +944,7 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   m18(gamma_f,M11,b,d) = (gamma_f*M11)/(QQ(1.5)*b*(d)^2)
   q37 = m18(gamma_f,M11,b,d)
   q38 = m18(q36,q32,bb,q17)
+  q38 = q38*100000
 
   var('mmu')
   mmu = 0.11.n(digits=2)
