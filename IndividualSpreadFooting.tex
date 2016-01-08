@@ -1,4 +1,4 @@
-%-------------------------main document start------------------%
+%========================== main document start =======================%
 \chapter{Individual Spread Footing}
 \section{Introduction} Clause 34 of the  \citetitle{IS2000} gives the
 provisions governing the design of reinforced concrete footings.  These
@@ -21,7 +21,8 @@ moment is critical.
 concession is withdrawn by the \citetitle{IS2000}, thereby adding to 
 the cost of eccentrically loaded footings.
 \end{enumerate}
-The \citetitle{IS2000} requires footings to be designed for the following limit states.
+The \citetitle{IS2000} requires footings to be designed for 
+the following limit states.
 
 \begin{enumerate}[(a)]
 \item Perimeter shear
@@ -31,9 +32,9 @@ The \citetitle{IS2000} requires footings to be designed for the following limit 
 \item Development length of column bars
 \end{enumerate}
 
-\section{Types of Individual Footings} Individual spread footings can be
-either square or rectangular in plan, the area of a rectangular footing
-with sides $A$ and $B$ being given by,
+\section{Types of Individual Footings} Individual spread footings can 
+be either square or rectangular in plan, the area of a rectangular
+footing with sides $A$ and $B$ being given by,
 
 \begin{equation}
 \label{eq:footingArea}
@@ -235,7 +236,7 @@ is the critical  section for bending moment.
 The bending moment for full width $B$ is given by,
 
 \begin{sagesilent}                                                      
-        var('p,B,A,a,k,N,cm')                                                
+        var('p,B,A,a,k,N,mm')                                                
         z=(p*B*(A-a))/8                                           
 \end{sagesilent}  
 
@@ -378,11 +379,11 @@ depending on the steel area provided for moment at the critical section
 $p_t $$\leq$$ 0.15$ in \tablem 19 and
 
 $$\begin{array}{l@{}l}
-&{}k=1.0 \text{ for } D \geq 300 \cm\\
-&{}=1.1 \text{ for } D = 250 \cm\\   
-&{}=1.2 \text{ for } D = 200 \cm\\
-&{}=1.25 \text{ for } D = 175 \cm\\   
-&{}=1.30 \text{ for } D \leq 150 \cm
+&{}k=1.0 \text{ for } D \geq 300 \mm\\
+&{}=1.1 \text{ for } D = 250 \mm\\   
+&{}=1.2 \text{ for } D = 200 \mm\\
+&{}=1.25 \text{ for } D = 175 \mm\\   
+&{}=1.30 \text{ for } D \leq 150 \mm
 \end{array}$$
 Normally, depth of footing given for perimeter shear
 (\chartm \ref{Dummy chart}) is more than adequate
@@ -454,7 +455,7 @@ for sloped or uniformly deep footings,
         \label{eq:uniformallydeepfooting}
         y= \sage{z} >L_d (tension)
 \end{equation}
-where 40 $\cm$ is taken as clear cover over ends of bars in footings. If 
+where 40 $\mm$ is taken as clear cover over ends of bars in footings. If 
 \eqn \ref{eq:uniformallydeepfooting} is not  satisfied, there are
 two ways to tackle this problem :
 
@@ -480,7 +481,7 @@ Footings of uniform depth (Type $a$), though commonly used in practice
 for reasons of ease in design and construction, are the costliest. These
 consume more concrete quantity (about 25\% to 45\%) than that by sloped
 footings. This type is suitable only for small footings with overall
-depth being restricted to, say, 300 $\cm$.
+depth being restricted to, say, 300 $\mm$.
 
 For footings of intermediate size, sloped footings with slope starting
 from $\dfrac{D}{2}$ away from the edge of column (Type $b$), are quite 
@@ -488,8 +489,8 @@ suitable. This type is quite economical giving concrete and steel
 quantities quite reasonable in comparison with other types. This type 
 is easy to design as well as to execute. This type is recommended for
 most individual footings encountered in buildings with overall depth
-greater than 300 $\cm$. The depth at the free end of footing may be kept 
-at 150 $\cm$, the specified minimum given by the \citetitle{IS2000}. The depth ($D$) of
+greater than 300 $\mm$. The depth at the free end of footing may be kept 
+at 150 $\mm$, the specified minimum given by the \citetitle{IS2000}. The depth ($D$) of
 this type of footing is kept the same as that for footings of uniform
 depth.
 
@@ -520,7 +521,7 @@ than the footings of uniform depth.
 
 $$P = \sage{PP} \kn$$
 $$p = \sage{pp.n(digits=1)} \knpms$$
-$$a = \sage{aa} \cm$$
+$$a = \sage{aa} \mm$$
 $$f_{ck} = \sage{ff_ck} \npmms$$
 $$f_y = \sage{ff_y} \npmms$$
 \textbf{Solution:}
@@ -560,9 +561,9 @@ def multipleCheck(number, divisor=25):
 
 \eqn \ref{eq:footingArea} gives, 
 
-$$A^2 = \sage{s0} = \sage{s.n(digits=5)} \ms$$
-$$A = \sage{o1} \cm$$
-$$A = \sage{s1} \cm$$
+$$A^2 = \sage{s0} = \sage{s.n(digits=5)} \mms$$
+$$A = \sage{o1} \mm$$
+$$A = \sage{s1} \mm$$
 
 \begin{sagesilent}
   p(A)=1000/(A*A)
@@ -584,7 +585,7 @@ $$p = \sage{s2} \knpms$$
 \tablem \ref{chaptertable} gives for $p = \sage{pp.n(digits=2)}$, 
 and steel \fefouronefive,
  
-$$D = \sage{f1(A)} = \sage{s4} \cm$$   
+$$D = \sage{f1(A)} = \sage{s4} \mm$$   
 
 
 \begin{sagesilent}
@@ -656,18 +657,18 @@ $$d = \sage{s9}$$
     s109 = multipleCheck(s107)
 \end{sagesilent}
 
-\eqn \ref{eq:depth-cover} gives with $c = \sage{cc.n(digits=2)} \cm,
+\eqn \ref{eq:depth-cover} gives with $c = \sage{cc.n(digits=2)} \mm,
 \phi=\sage{pphi.n(digits=2)}$,
-$$D = \sage{s10} = \sage{s107} \cm$$
-$$D = \sage{s109} \cm \text{ is safe} $$
+$$D = \sage{s10} = \sage{s107} \mm$$
+$$D = \sage{s109} \mm \text{ is safe} $$
 
 \item  \textbf{Design for moment}  
 \eqn \ref{eq:criticalMoment} gives,
 
-$$M_{1-1} = \sage{s12} = \sage{s13.n(digits=4)} \knpms$$
+$$M_{1-1} = \sage{s12} = \sage{s13.n(digits=4)} \knm$$
 
 With rectangular compression zone, \chartm (2.2) gives for,   
-$$d = \sage{s14} = \sage{s15.n(digits=4)}$$
+$$d = \sage{s14} = \sage{s15.n(digits=4)}\mm$$
 $$k = \sage{s17.n(digits=4)}$$
 \begin{sagesilent}
   var('mu')
@@ -718,16 +719,16 @@ $$k = \sage{s17.n(digits=4)}$$
 
 \end{sagesilent}
 $$\mu = \sage{mu.n(digits=2)}$$
-$$A_{st} = \sage{s18} = \sage{s19} \ms$$
+$$A_{st} = \sage{s18} = \sage{s19} \mms$$
 
-$$\sage{s20} = \sage{s22} \cmspm$$
+$$\sage{s20} = \sage{s22} \mmspm$$
  
 \tablem 11.4 gives the minimum tension steel area in footings taken
 as slab,
 
-$$A_{st}(min) = \sage{s23} = \sage{s24} \cmspm$$
+$$A_{st}(min) = \sage{s23} = \sage{s24} \mmspm$$
 
-$\phi 12/\sage{q301}$ $c/c$ both ways provided giving an area$ = \sage{q303} \cmspm$\\ 
+$\phi 12/\sage{q301}$ $c/c$ both ways provided giving an area$ = \sage{q303} \mmspm$\\ 
 which is exceeded by that provided. 
 
 \item  \textbf{Design for beam shear}\\                              
@@ -750,7 +751,7 @@ which is exceeded by that provided.
 $$S_{2-2} = \sage{s25} =\sage{s26.n(digits=4)} \kn$$
 \eqn \ref{eq:shearstress22} gives
 
-$$\tau_{v} = \sage{s27} = \sage{s28} \knpms$$
+$$\tau_{v} = \sage{s27} = \sage{s28} \npmms$$
 
 $$\sage{s29} = \sage{s30}$$
         
@@ -760,9 +761,9 @@ $$\sage{tau_c}=0.32 \npmms$$
 With                                                                    
 $$k = 1.0 $$                                                            
 \eqn \ref{eq:concretesolidslabs} gives,                            
-        $$\sage{tau_a}=\sage{tau_c}=0.32 \knpms$$                      
+        $$\sage{tau_a}=\sage{tau_c}=0.32 \npmms$$                      
 With                                                                    
-$$\sage{tau_v}=\sage{tau_a}, D = 50 \cm \text{ is safe}$$                
+$$\sage{tau_v}=\sage{tau_a}, D = 50 \mm \text{ is safe}$$                
                                                                         
 \item  \textbf{Check on development length of footing bars}             
                                                                         
@@ -780,15 +781,15 @@ $$\sage{tau_v}=\sage{tau_a}, D = 50 \cm \text{ is safe}$$
   s34 = s34.n(digits=3)
 \end{sagesilent}
 
-$$L_d(tension) = \sage{s31} = \sage{s32.n(digits=2)} \cm$$
+$$L_d(tension) = \sage{s31} = \sage{s32.n(digits=2)} \mm$$
 \eqn \ref{eq:uniformallydeepfooting} gives,
 
-$$y = \sage{s33} = \sage{s34} \cm$$
+$$y = \sage{s33} = \sage{s34} \mm$$
 
 with $y > L_d$ (tension), footing bars will develop full strength at
 the critical   section.
                                                                         
-It may be noted that with $D$ = $\sage{s109}$  $\cm$, this type of footing
+It may be noted that with $D$ = $\sage{s109}$  $\mm$, this type of footing
 of uniform depth is   not economical. Footing of Types ($b$) and ($c$)
 with sloping depth would be more economical than   the present design.
 \end{enumerate}
@@ -803,8 +804,8 @@ Same as in Ex. 12.1 with
   bb = 600                                                               
 \end{sagesilent}                                                        
                                                                         
-$$a = \sage{aa} cm$$                                                    
-$$b = \sage{bb} cm$$ 
+$$a = \sage{aa} \mm$$                                                    
+$$b = \sage{bb} \mm$$ 
 
 and the footing is to have equal overhangs on all sides of column.\\
 \textbf{Required:} Design the footing\\
@@ -842,16 +843,16 @@ and the footing is to have equal overhangs on all sides of column.\\
 
   $$A \times B = \sage{q1} = \sage{q2}$$  
 
-  $$ A\times B= \frac{1000}{0.02}=50000 \ms$$
+  $$ A\times B= \frac{1000}{0.02}=50000 \mms$$
   The equal overhang condition, \eqn \ref{eq:shape} gives,
   $$\sage{q3} = \sage{q4} = \sage{q5}$$
   
   The solution of these two equations gives,
-  $$A = \sage{q7} cm$$
-  $$B = \sage{q8} cm$$
+  $$A = \sage{q7} \mm$$
+  $$B = \sage{q8} \mm$$
 
-  Practical designer may choose $A = \sage{q9} cm$ and $B = \sage{q10} cm$
-  $$p = \sage{q11} = \sage{q12} kN/cm^2$$
+  Practical designer may choose $A = \sage{q9} \mm$ and $B = \sage{q10} \mm$
+  $$p = \sage{q11} = \sage{q12} \knpms$$
   
   \tablem \ref{chaptertable} gives for $p = .02$ and steel \fefouronefive,
  
@@ -865,8 +866,8 @@ and the footing is to have equal overhangs on all sides of column.\\
 \end{sagesilent}
 
   $$\frac{D}{A}=\frac{1}{4.5}\times1.20$$
-  $$D = \sage{q13} = \sage{q14.n(digits=2)} cm$$
-  $$D = \sage{q14.n(digits=2)} cm \text{ and } D_m = \sage{q15.n(digits=2)} cm$$
+  $$D = \sage{q13} = \sage{q14.n(digits=2)} \mm$$
+  $$D = \sage{q14.n(digits=2)} \mm \text{ and } D_m = \sage{q15.n(digits=2)} \mm$$
  
 \item  \textbf{Check for perimeter shear}\\
  
@@ -911,8 +912,8 @@ and the footing is to have equal overhangs on all sides of column.\\
     q30 = q29.n(digits=2)
 \end{sagesilent}
   
-\eqn \ref{eq:depth-cover} gives, with $c = \sage{cc} cm$, $\phi = \sage{pphi.n(digits=2)} cm$,
-$$d = \sage{q16} = \sage{q17.n(digits=3)} cm$$
+\eqn \ref{eq:depth-cover} gives, with $c = \sage{cc} \mm$, $\phi = \sage{pphi.n(digits=2)} \mm$,
+$$d = \sage{q16} = \sage{q17.n(digits=3)} \mm$$
 \eqn \ref{eq:shape} gives,
 $$\alpha = \sage{q18} = \sage{q19}$$
 
@@ -922,8 +923,8 @@ $$\alpha = \sage{q18} = \sage{q19}$$
  
  $$\frac{A}{d} = \sage{q25} \text{ or d } = \sage{q26} = \sage{q27}$$
  
- $$D = \sage{q28} =\sage{q29} cm$$
- $$D = \sage{q30} \text{ cm is safie in perimeter shear.}$$
+ $$D = \sage{q28} =\sage{q29} \mm$$
+ $$D = \sage{q30} \text{$\mm$ is safe in perimeter shear.}$$
  
 \item  \textbf{Design for moment}\\
 
@@ -986,9 +987,9 @@ $$\alpha = \sage{q18} = \sage{q19}$$
 
    \eqn \ref{eq:criticalMoment} gives,
 
-   $$M_{1-1} = \sage{q31} = \sage{q32} kNcm$$
+   $$M_{1-1} = \sage{q31} = \sage{q32} \knm$$
    with trapezoidal compression zone, Chart 4.1 gives for,
-   $$b = \sage{bb} cm, d = \sage{q17.n(digits=3)} cm$$
+   $$b = \sage{bb} \mm, d = \sage{q17.n(digits=3)} \mm$$
 
    $$\tan\beta = \sage{q33} = \sage{q34}$$
 
@@ -998,15 +999,15 @@ $$\alpha = \sage{q18} = \sage{q19}$$
    
    $$\mu = \sage{mmu}$$
    
-   $$A_{st} = \sage{q39} = \sage{q40} cm^2/m$$
+   $$A_{st} = \sage{q39} = \sage{q40} \mms$$
 
-   $$\frac{A_{st}}{B}= \sage{q42} cm^2/m$$
-   Minimum steel for average value of $D = \sage{q43} = \sage{q44}$ 
+   $$\frac{A_{st}}{B}= \sage{q42} \mmspm$$
+   Minimum steel for average value of $D = \sage{q43} = \sage{q44} \mm$ 
    regarding footings as slabs,
    
-   $$A_{st}(min)=1.2\times \sage{q44} = \sage{q46} cm^2/m$$
+   $$A_{st}(min)=1.2\times \sage{q44} = \sage{q46} \mmspm$$
 
-   Provide $\phi$ $12/\sage{q201}$ $c/c$ bothways, $area= \sage{q203} cm^2/m$
+   Provide $\phi$ $12/\sage{q201}$ $c/c$ bothways, $area= \sage{q203} \mmspm$
   
 \item  \textbf{Design for beam shear}
 
@@ -1066,45 +1067,45 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   
   \eqn (\ref{eq:ultimatemoment22}) gives,
   
-  $$D' = \sage{q49} = \sage{q50} cm$$
+  $$D' = \sage{q49} = \sage{q50} \mm$$
   
   \eqn (\ref{eq:ultimatemoment22b}) gives,
   
   
-  $$d' = \sage{q51} = \sage{q52} cm$$ 
+  $$d' = \sage{q51} = \sage{q52} \mm$$ 
  \eqn (\ref{eq:ultimatemoment22c}) gives,
 
-  $$b' = \sage{q53} = \sage{q54} cm$$
+  $$b' = \sage{q53} = \sage{q54} \mm$$
   
   \eqn (\ref{eq:moment22}) gives
 
-  $$M_{2-2} = \sage{q56} = \sage{q57} kNcm$$
+  $$M_{2-2} = \sage{q56} = \sage{q57} \knm$$
   
   \eqn \ref{eq:clause40.1.1} gives,
   
   $$\tau_v = \frac{\sage{q59}}{\sage{q54} \times \sage{q52}}-\frac{1.5 \times \sage{q57} \times \sage{q34}}{\sage{q54} \times (\sage{q52})^2}$$
 
-  $$\tau_v = \sage{q61} kNcm^2$$
+  $$\tau_v = \sage{q61} \npmms$$
   
   For
 
   $$\sage{q62} = \sage{q63}$$
 
-  \tablem 19 gives ${\tau_c}$ = 0.35 \text{$kN/cm^2$}
-  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c.n(digits=3)} kN/cm^2 > {\tau_u}=0.34 kN/cm^2,$$
-  $$D = \sage{q30} \text{cm is safe in beam shear}$$  
-  
-\item  \textbf{Check on development length of footing bars}\\
+  \tablem 19 gives ${\tau_c}$ = 0.35 $\npmms$
+  $$k = 1.0,  {\tau_a} = {\tau_c} = \sage{tau_c.n(digits=3)} \npmms > {\tau_u}=0.34 \npmms,$$
+  $$D = \sage{q30} \text{$\mm$ is safe in beam shear}$$  
+
+ \item  \textbf{Check on development length of footing bars}\\
 \tablem (11.3)gives for $\phi$ 12 bars
 
-$$L_d (tension) = \sage{q68} = \sage{q69} cm$$
-\chartm \ref{Dummy chart} Effective Depth (($d$) of Square Individual Footings for Safety in perimeter shear.
+$$L_d (tension) = \sage{q68} = \sage{q69} mm$$
+\chartm \ref{Dummy chart} Effective Depth ($d$) of Square Individual Footings for Safety in perimeter shear.
 $$k=\frac{\Bigg[1-\left(\frac{a}{A}\right)^2
 -2\left(\frac{a}{A}\right)^2\left( \frac{d}{A}\right)-\left(\frac{d}{A}\right)^2\Bigg]}{\Bigg[\left(\frac{a}{A}\right)\left(\frac{d}{A}\right)+\left(\frac{d}{A}\right)^2\Bigg]}$$
 $$k=0.067\frac{\sqrt{f_{ck}}}{p}$$
 \eqn \ref{eq:uniformallydeepfooting} gives,
 
-$$y = \sage{q70} = \sage{q71} cm > \sage{q69} cm \text{ OK,}$$
+$$y = \sage{q70} = \sage{q71} \mm > \sage{q69} \mm \text{ OK,}$$
 \end{enumerate}
 
 %=================================================================================%
@@ -1134,7 +1135,7 @@ $$y = \sage{q70} = \sage{q71} cm > \sage{q69} cm \text{ OK,}$$
 \textbf{Notes:}
 \begin{enumerate}
 \item  $fck$ in $N/mm^2$
-\item $p$ in $kN/cm^2$b
+\item $p$ in $kN/mm^2$b
 \item For rectangular column $a\times b$
 Assume $a=\dfrac{(a+b)}{2}$ as in approximation provided $a/b$ $\leq$ $0.50.$
 \item Chart can be used for squarish rectangular footings provided an 
@@ -1183,8 +1184,4 @@ will make for economy.
 given by
 the above table by 20\%}.
 \end{enumerate}
-
-~\cite{is4562000}
-~\cite{aci1981aci}
-~\cite{aci31877}
 \printbibliography
