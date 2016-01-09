@@ -590,9 +590,9 @@ $$D = \sage{f1(A)} = \sage{s4} \mm$$
 
 \begin{sagesilent}
   var('alpha')
-  f2(f_ck,alpha,p)=(.067.n(digits=2)*((f_ck)^(1/2))*alpha)/p
+  f2(f_ck,alpha,p)=(10000*.067.n(digits=2)*((f_ck)^(1/2))*alpha)/(p)
   s5=f2(f_ck,alpha,p)
-  s66=f2(ff_ck,1,pp*100)
+  s66=f2(ff_ck,1,s2)
   
   f3(a,A)=a/A
   s6=f3(a,A)
@@ -620,6 +620,7 @@ $$D = \sage{f1(A)} = \sage{s4} \mm$$
 \item \textbf{Check for perimeter shear}   
 
 \chartm \ref{Dummy chart} gives for, 
+
 $$k = \sage{s5} = \sage{s66.n(digits=4)}$$
 $$\sage{s6} = \sage{s7}$$
 
@@ -647,9 +648,9 @@ $$d = \sage{s9}$$
   s14=f7(D,c,phi)
   s15=f7(s11,cc,pphi)
 
-  f8(M_1,A,d) = (1.5*M_1)/(1.5*A*(d**2))
+  f8(M_1,A,d) = ((10^5)*1.5*M_1)/(1.5*A*(d**2))
   s16=f8(M_1,A,d)
-  s17=f8(s13*100,s1/10,s15/10)
+  s17=f8(s13,s1,s15)
   
   if(s4>s107):
     s109 = multipleCheck(s4)
@@ -884,10 +885,9 @@ and the footing is to have equal overhangs on all sides of column.\\
   q18 = m9(D,D_m,d,a,A,c,phi)
   q19 = m9(q14,q15,q17,aa,q9,cc,pphi).n(digits=2)
 
-  m10(f_ck,p,alpha) = (.067.n(digits=2)*((f_ck)^(1/2))*alpha)/p 
+  m10(f_ck,p,alpha) = (.067.n(digits=2)*10000*((f_ck)^(1/2))*alpha)/p 
   q20 = m10(f_ck,p,alpha)
   q21 = m10(ff_ck,q12,q19).n(digits=3)
-  q21 = q21*10000
 
   m11(a,b,A,B) = ((a+b)/2)/((A+B)/2)
   q22 = m11(a,b,A,B)
@@ -918,6 +918,7 @@ $$d = \sage{q16} = \sage{q17.n(digits=3)} \mm$$
 $$\alpha = \sage{q18} = \sage{q19}$$
 
  \chartm \ref{Dummy chart} gives for,
+
  $$k = \sage{q20} = \sage{q21}$$
  $$\frac{a}{A} \text{(average value)}= \sage{q22} = \sage{q23}$$
  
@@ -942,10 +943,9 @@ $$\alpha = \sage{q18} = \sage{q19}$$
   q36 = m17(q17,bb,q34).n(digits=2)
 
   var('M11', latex_name="M_{1-1}") 
-  m18(gamma_f,M11,b,d) = (gamma_f*M11)/(QQ(1.5)*b*(d)^2)
+  m18(gamma_f,M11,b,d) = (gamma_f*M11*(10^5))/(QQ(1.5)*b*(d)^2)
   q37 = m18(gamma_f,M11,b,d)
   q38 = m18(q36,q32,bb,q17)
-  q38 = q38*100000
 
   var('mmu')
   mmu = 0.11.n(digits=2)
