@@ -8,6 +8,7 @@
 \usepackage{emptypage}
 \usepackage{subcaption}
 \usepackage{enumerate}
+\usepackage{chngcntr} %to change counter of example according to chapter
 \usepackage{pgfplotstable}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -28,5 +29,15 @@
 \newcommand{\npmms}{N/mm^2}
 \newcommand{\mms}{mm^2}
 \newcommand{\mmspm}{mm^2/m}
+\newcommand{\given}{\textbf {Given:}}
+\newcommand{\solution}{\textbf {Solution:}}
+\newcommand{\required}{\textbf{Required:}}
+\newcounter{example}
+\counterwithin{example}{chapter}
+\newenvironment{example}{   
+  \refstepcounter{example}
+  \textbf{Example~\theexample.}
+} %example environment created
+
 \DeclareCaptionType{chart}
 \addbibresource{DesignAids.bib}
