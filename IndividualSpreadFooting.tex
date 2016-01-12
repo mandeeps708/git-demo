@@ -508,8 +508,9 @@ than the footings of uniform depth.
 %====================== first numerical example ======================%
 
 \section{Examples}
-\textbf{Example 12.1. Square footing of Uniform Depth (Type a).}\\
-\textbf{Given:}
+\begin{example}
+Square footing of Uniform Depth (Type a).\\
+\given
 \begin{sagesilent}
   var('PP,pp,aa,ff_ck,ff_y')
   PP = 1000
@@ -524,9 +525,10 @@ $$p = \sage{pp.n(digits=1)} \knpms$$
 $$a = \sage{aa} \mm$$
 $$f_{ck} = \sage{ff_ck} \npmms$$
 $$f_y = \sage{ff_y} \npmms$$
-\textbf{Solution:}
+\required Design the footing\\
+\solution
 
-\begin{enumerate}
+\begin{enumerate}[(i)]
 \item \textbf{Dimensions of footing}\\
 
 \begin{sagesilent}                                                      
@@ -794,9 +796,13 @@ It may be noted that with $D$ = $\sage{s109}$  $\mm$, this type of footing
 of uniform depth is   not economical. Footing of Types ($b$) and ($c$)
 with sloping depth would be more economical than   the present design.
 \end{enumerate}
-%====================== second numerical example =====================%
-\textbf{Example 12.2. Rectangular sloped footing of Type ($c$).}\\
-\textbf{Given:}
+\end{example}
+
+%================= second numerical example ==============%
+
+\begin{example}
+Rectangular sloped footing of Type ($c$).\\
+\given \\
 Same as in Ex. 12.1 with
 
 \begin{sagesilent}                                                      
@@ -807,12 +813,11 @@ Same as in Ex. 12.1 with
                                                                         
 $$a = \sage{aa} \mm$$                                                    
 $$b = \sage{bb} \mm$$ 
-
 and the footing is to have equal overhangs on all sides of column.\\
-\textbf{Required:} Design the footing\\
-\textbf{Solution:}
+\required Design the footing\\
+\solution
 
-\begin{enumerate}
+\begin{enumerate}[(i)]
 \begin{sagesilent}
   m1(P,p) = P/p
   q1 = m1(P,p)
@@ -1107,7 +1112,7 @@ $$k=0.067\frac{\sqrt{f_{ck}}}{p}$$
 
 $$y = \sage{q70} = \sage{q71} \mm > \sage{q69} \mm \text{ OK,}$$
 \end{enumerate}
-
+\end{example}
 %=================================================================================%
 %--------------------------------sage graph---------------------------------------%
 \begin{sagesilent}                                                      
