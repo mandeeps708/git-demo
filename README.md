@@ -28,6 +28,6 @@ To run:
     3)sage main.sagetex.sage
     4)pdflatex main.tex
 
-To create  pdf through script run:
+To create  pdf through script run after changing permissions:
 -----------------------------
     ./run
