@@ -1,4 +1,6 @@
-# DesignAids
+# This is just a demo git repo.
+
+DesignAids
 
 Requirements:
 -----------------------------
