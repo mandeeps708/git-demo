@@ -4,10 +4,11 @@ DesignAids
 
 Requirements:
 -----------------------------
-    1) Install LaTex
-    2) Install SageMath
-    3) Configure LaTex with Sagemath
-    4) Install biber
+
+- Install LaTex
+- Install SageMath
+- Configure LaTex with Sagemath
+- Install biber
 
 
 Installation of Requirements:
